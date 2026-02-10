@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useApp } from '../../../context/AppContext';
 import { VideoIcon } from '../../Icons/SVGs';
 import './MentorJoinCall.css';
 
