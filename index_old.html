@@ -6,7 +6,1103 @@
     <title>MentorUnion | SaaS Mentoring Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            /* Modern Dark Theme - MentorUnion Inspired */
+            --primary-black: #0A0A0A;
+            --secondary-black: #1A1A1A;
+            --card-bg: #212121;
+            --surface-dark: #2D2D2D;
+            --border-dark: #404040;
+            
+            /* Text Colors */
+            --text-primary: #FFFFFF;
+            --text-secondary: #E5E5E5;
+            --text-tertiary: #A3A3A3;
+            
+            /* MentorUnion Brand Colors */
+            --mentorunion-blue: #2563EB;
+            --mentorunion-blue-light: #3B82F6;
+            --mentorunion-blue-dark: #1D4ED8;
+            --mentorunion-teal: #0D9488;
+            --mentorunion-green: #10B981;
+            --mentorunion-purple: #7C3AED;
+            --mentorunion-orange: #F97316;
+            --mentorunion-red: #EF4444;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--mentorunion-blue) 0%, var(--mentorunion-purple) 100%);
+            --gradient-blue: linear-gradient(135deg, var(--mentorunion-blue) 0%, var(--mentorunion-blue-dark) 100%);
+            --gradient-teal: linear-gradient(135deg, var(--mentorunion-teal) 0%, #14B8A6 100%);
+            --gradient-dark: linear-gradient(135deg, var(--secondary-black) 0%, var(--primary-black) 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+            --shadow-blue: 0 4px 14px 0 rgba(37, 99, 235, 0.2);
+            
+            /* Layout */
+            --sidebar-width: 280px;
+            --header-height: 72px;
+            --border-radius: 16px;
+            --border-radius-sm: 10px;
+            --border-radius-lg: 20px;
+        }
+
+        body {
+            background-color: var(--primary-black);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--secondary-black);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .role-switcher {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 4px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-dark);
+        }
+
+        .role-btn {
+            padding: 8px 16px;
+            border-radius: var(--border-radius-sm);
+            border: none;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            color: var(--text-tertiary);
+        }
+
+        .role-btn.active {
+            background: var(--surface-dark);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .role-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 20px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--secondary-black);
+            height: calc(100vh - var(--header-height));
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            box-shadow: var(--shadow-md);
+            padding: 24px 0;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+            z-index: 90;
+            border-right: 1px solid var(--border-dark);
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        .nav-section {
+            margin-bottom: 32px;
+            padding: 0 20px;
+        }
+
+        .nav-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            margin-bottom: 4px;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: var(--surface-dark);
+            color: var(--text-primary);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: var(--surface-dark);
+            color: var(--mentorunion-blue);
+            font-weight: 500;
+            border-left: 4px solid var(--mentorunion-blue);
+        }
+
+        .nav-item.active i {
+            color: var(--mentorunion-blue);
+        }
+
+        .nav-item i {
+            width: 20px;
+            font-size: 16px;
+            color: var(--text-tertiary);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            padding: 32px;
+            transition: margin-left 0.3s ease;
+            background: var(--primary-black);
+        }
+
+        .main-content.full-width {
+            margin-left: 0;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .page-title h1 {
+            font-size: 32px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--text-primary) 0%, var(--mentorunion-blue-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-title p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 600px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--border-radius-sm);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .btn-primary:hover {
+            background: var(--mentorunion-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--surface-dark);
+            color: var(--text-primary);
+            border: 1px solid var(--border-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--card-bg);
+            border-color: var(--mentorunion-blue-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--mentorunion-green);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-success:hover {
+            background: #0DA271;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-teal {
+            background: var(--gradient-teal);
+            color: white;
+        }
+
+        .btn-teal:hover {
+            background: #0C857A;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--mentorunion-blue-light);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--gradient-dark);
+            border-radius: var(--border-radius);
+            padding: 28px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--mentorunion-blue);
+        }
+
+        .stat-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            background: var(--gradient-blue);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .stat-content h3 {
+            font-size: 32px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .stat-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-dark);
+            background: var(--card-bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: transparent;
+        }
+
+        th, td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        th {
+            background-color: var(--surface-dark);
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr {
+            transition: all 0.2s ease;
+        }
+
+        tr:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        .status-scheduled {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--mentorunion-blue);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .status-live {
+            background-color: rgba(249, 115, 22, 0.15);
+            color: var(--mentorunion-orange);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .status-completed {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--mentorunion-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--border-dark);
+            font-size: 15px;
+            transition: all 0.2s ease;
+            background: var(--surface-dark);
+            color: var(--text-primary);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--mentorunion-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: var(--card-bg);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-dark);
+        }
+
+        .modal-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .modal-footer {
+            padding: 20px 28px;
+            border-top: 1px solid var(--border-dark);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--text-primary);
+        }
+
+        /* Session flow steps */
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .flow-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-dark);
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--surface-dark);
+            color: var(--text-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            border: 3px solid var(--primary-black);
+            box-shadow: 0 0 0 2px var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: var(--gradient-blue);
+            color: white;
+            box-shadow: 0 0 0 2px var(--mentorunion-blue), var(--shadow-blue);
+            transform: scale(1.1);
+        }
+
+        .step.completed .step-number {
+            background: var(--mentorunion-green);
+            color: white;
+            box-shadow: 0 0 0 2px var(--mentorunion-green);
+        }
+
+        .step-label {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-label {
+            color: var(--mentorunion-blue);
+            font-weight: 600;
+        }
+
+        /* Call simulation */
+        .call-container {
+            text-align: center;
+            padding: 40px;
+            background: var(--gradient-dark);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-dark);
+        }
+
+        .call-header {
+            margin-bottom: 40px;
+        }
+
+        .call-participants {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .participant {
+            text-align: center;
+        }
+
+        .participant-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 15px;
+            border: 6px solid var(--card-bg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .participant.mentee .participant-avatar {
+            background: var(--gradient-teal);
+        }
+
+        .participant.mentor .participant-avatar {
+            background: var(--gradient-blue);
+        }
+
+        .call-timer {
+            font-size: 56px;
+            font-weight: 700;
+            margin: 40px 0;
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .call-controls {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .call-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            background: var(--surface-dark);
+            color: var(--text-primary);
+            border: 1px solid var(--border-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        .call-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--mentorunion-blue);
+        }
+
+        .call-btn.end-call {
+            background: var(--mentorunion-red);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.3);
+        }
+
+        .call-btn.end-call:hover {
+            background: #DC2626;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Role-specific indicators */
+        .role-indicator {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .indicator-super-admin {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: var(--mentorunion-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .indicator-platform-admin {
+            background-color: rgba(124, 58, 237, 0.15);
+            color: var(--mentorunion-purple);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .indicator-org-admin {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--mentorunion-blue);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+
+        .indicator-mentor {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--mentorunion-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .indicator-mentee {
+            background-color: rgba(249, 115, 22, 0.15);
+            color: var(--mentorunion-orange);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-tertiary);
+        }
+
+        .empty-state i {
+            font-size: 64px;
+            margin-bottom: 24px;
+            color: var(--border-dark);
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .badge-blue {
+            background: var(--gradient-blue);
+            color: white;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .badge-teal {
+            background: var(--gradient-teal);
+            color: white;
+        }
+
+        .badge-green {
+            background: var(--mentorunion-green);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.2);
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 8px;
+            background: var(--surface-dark);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-blue);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            box-shadow: var(--shadow-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .toggle-sidebar {
+                display: block !important;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                padding: 0 24px;
+            }
+            .role-switcher {
+                display: none;
+            }
+            .mobile-role-switcher {
+                display: block !important;
+            }
+            .main-content {
+                padding: 24px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+            .call-participants {
+                gap: 30px;
+            }
+            .participant-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .call-participants {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .page-header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            .page-title h1 {
+                font-size: 28px;
+            }
+            .stat-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .call-timer {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                padding: 0 16px;
+            }
+            .main-content {
+                padding: 20px 16px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 20px;
+            }
+            .btn {
+                padding: 10px 20px;
+            }
+        }
+
+        .toggle-sidebar {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-primary);
+            margin-right: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-sidebar:hover {
+            color: var(--mentorunion-blue);
+        }
+
+        .mobile-role-switcher {
+            display: none;
+            margin-bottom: 24px;
+        }
+
+        .mobile-role-select {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--border-radius-sm);
+            border: 1px solid var(--border-dark);
+            font-size: 15px;
+            background-color: var(--surface-dark);
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .mobile-role-select:focus {
+            outline: none;
+            border-color: var(--mentorunion-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Notification dot */
+        .notification-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--mentorunion-red);
+            box-shadow: 0 0 8px var(--mentorunion-red);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--surface-dark);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-dark);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--mentorunion-blue);
+        }
+
+        /* Selection */
+        ::selection {
+            background-color: rgba(37, 99, 235, 0.3);
+            color: var(--text-primary);
+        }
+
+        /* Placeholder */
+        ::placeholder {
+            color: var(--text-tertiary);
+            opacity: 0.7;
+        }
+
+        /* Focus states */
+        .btn:focus,
+        .form-control:focus,
+        .mobile-role-select:focus {
+            outline: 2px solid var(--mentorunion-blue);
+            outline-offset: 2px;
+        }
+
+        /* Checkbox and radio styling */
+        input[type="checkbox"],
+        input[type="radio"] {
+            accent-color: var(--mentorunion-blue);
+        }
+
+        /* Hover effects for table rows */
+        tbody tr:hover {
+            background: linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0%, transparent 100%);
+            border-left: 4px solid var(--mentorunion-blue);
+        }
+
+        /* Loading animation */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, var(--surface-dark) 25%, var(--card-bg) 50%, var(--surface-dark) 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+        }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -1133,6 +2229,459 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Application State
+        const state = {
+            currentRole: 'super-admin',
+            currentPage: 'dashboard',
+            bookingData: {
+                program: 'Career Coaching',
+                mentor: null,
+                mentee: null,
+                time: null
+            },
+            sessionStatus: 'scheduled',
+            callTimer: 0,
+            timerInterval: null
+        };
+
+        // Role Configuration
+        const roles = {
+            'super-admin': {
+                name: 'Super Admin',
+                roleText: 'System Owner',
+                avatarText: 'SA'
+            },
+            'platform-admin': {
+                name: 'Platform Admin',
+                roleText: 'Platform Operations',
+                avatarText: 'PA'
+            },
+            'org-admin': {
+                name: 'Organisation Admin',
+                roleText: 'TechMentor Inc.',
+                avatarText: 'OA'
+            },
+            'mentor': {
+                name: 'Dr. Sarah Johnson',
+                roleText: 'Mentor',
+                avatarText: 'SJ'
+            },
+            'mentee': {
+                name: 'Alex Thompson',
+                roleText: 'Mentee',
+                avatarText: 'AT'
+            }
+        };
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Initialize UI based on current state
+            updateUIForRole();
+            
+            // Show initial page
+            showPage(state.currentPage);
+        });
+
+        // Set up all event listeners
+        function setupEventListeners() {
+            // Role switcher buttons
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const role = this.getAttribute('data-role');
+                    switchRole(role);
+                });
+            });
+
+            // Mobile role switcher
+            document.getElementById('mobileRoleSelect').addEventListener('change', function() {
+                switchRole(this.value);
+            });
+
+            // Navigation items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const page = this.getAttribute('data-page');
+                    navigateToPage(page);
+                });
+            });
+
+            // Toggle sidebar
+            document.getElementById('toggleSidebar').addEventListener('click', function() {
+                document.getElementById('sidebar').classList.toggle('active');
+            });
+
+            // Quick action buttons
+            document.querySelectorAll('.btn[data-page]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const page = this.getAttribute('data-page');
+                    navigateToPage(page);
+                });
+            });
+
+            // Start booking flow
+            document.getElementById('startBookingFlow').addEventListener('click', function() {
+                navigateToPage('session-booking');
+                resetBookingFlow();
+            });
+
+            // Booking flow steps
+            document.querySelectorAll('.select-mentor').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.bookingData.mentor = this.getAttribute('data-mentor');
+                    updateBookingStep(2, 3);
+                });
+            });
+
+            document.querySelectorAll('.select-mentee').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    state.bookingData.mentee = this.getAttribute('data-mentee');
+                    updateBookingStep(3, 4);
+                });
+            });
+
+            // Booking navigation
+            document.getElementById('prevStep1').addEventListener('click', function() {
+                updateBookingStep(2, 1);
+            });
+
+            document.getElementById('prevStep2').addEventListener('click', function() {
+                updateBookingStep(3, 2);
+            });
+
+            document.getElementById('prevStep4').addEventListener('click', function() {
+                updateBookingStep(5, 4);
+            });
+
+            // Confirm booking
+            document.getElementById('confirmBooking').addEventListener('click', function() {
+                document.getElementById('bookingStep5').style.display = 'none';
+                document.getElementById('bookingConfirmation').style.display = 'block';
+                
+                // Update all steps to completed
+                for (let i = 1; i <= 5; i++) {
+                    const step = document.getElementById(`step${i}`);
+                    step.classList.remove('active');
+                    step.classList.add('completed');
+                }
+                
+                // Update session status
+                state.sessionStatus = 'scheduled';
+                
+                // Show notification
+                showNotification('Session booked successfully! The session is now in "Scheduled" status.');
+            });
+
+            // View session details after booking
+            document.getElementById('viewSessionDetails').addEventListener('click', function() {
+                showNotification('Session details would open here. In a full implementation, this would show the session details page.');
+            });
+
+            // Book another session
+            document.getElementById('bookAnotherSession').addEventListener('click', function() {
+                resetBookingFlow();
+            });
+
+            // Create organisation modal
+            document.getElementById('createOrganisation').addEventListener('click', function() {
+                document.getElementById('createOrgModal').classList.add('active');
+            });
+
+            document.getElementById('closeOrgModal').addEventListener('click', function() {
+                document.getElementById('createOrgModal').classList.remove('active');
+            });
+
+            document.getElementById('cancelOrgModal').addEventListener('click', function() {
+                document.getElementById('createOrgModal').classList.remove('active');
+            });
+
+            document.getElementById('submitOrgModal').addEventListener('click', function() {
+                showNotification('Organisation created successfully! In a full implementation, this would create the organisation and refresh the list.');
+                document.getElementById('createOrgModal').classList.remove('active');
+            });
+
+            // End call button
+            document.getElementById('endCallBtn').addEventListener('click', function() {
+                // Stop the timer
+                if (state.timerInterval) {
+                    clearInterval(state.timerInterval);
+                }
+                
+                // Show outcome modal
+                document.getElementById('sessionOutcomeModal').classList.add('active');
+            });
+
+            // Session outcome selection
+            document.getElementById('outcomeCompleted').addEventListener('click', function() {
+                completeSession('completed');
+            });
+
+            document.getElementById('outcomeNoShow').addEventListener('click', function() {
+                completeSession('no-show');
+            });
+
+            document.getElementById('outcomeDropped').addEventListener('click', function() {
+                completeSession('dropped');
+            });
+
+            document.getElementById('closeOutcomeModal').addEventListener('click', function() {
+                document.getElementById('sessionOutcomeModal').classList.remove('active');
+            });
+
+            // Edit session rules
+            document.getElementById('editSessionRules').addEventListener('click', function() {
+                navigateToPage('session-rules');
+            });
+        }
+
+        // Switch between roles
+        function switchRole(role) {
+            state.currentRole = role;
+            state.currentPage = 'dashboard';
+            
+            // Update UI
+            updateUIForRole();
+            
+            // Show dashboard for the new role
+            showPage('dashboard');
+            
+            // Update active role button
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-role') === role) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update mobile selector
+            document.getElementById('mobileRoleSelect').value = role;
+            
+            // Show notification
+            showNotification(`Switched to ${roles[role].name} role`);
+        }
+
+        // Update UI based on current role
+        function updateUIForRole() {
+            const roleConfig = roles[state.currentRole];
+            
+            // Update header
+            document.getElementById('userName').textContent = roleConfig.name;
+            document.getElementById('userRole').textContent = roleConfig.roleText;
+            document.getElementById('userAvatar').textContent = roleConfig.avatarText;
+            
+            // Update sidebar navigation
+            document.querySelectorAll('.nav-section').forEach(section => {
+                if (section.getAttribute('data-role') === state.currentRole) {
+                    section.style.display = 'block';
+                    
+                    // Set first nav item as active
+                    const firstNavItem = section.querySelector('.nav-item');
+                    if (firstNavItem) {
+                        document.querySelectorAll('.nav-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        firstNavItem.classList.add('active');
+                    }
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Navigate to a specific page
+        function navigateToPage(page) {
+            state.currentPage = page;
+            showPage(page);
+            
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-page') === page) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Show the specified page
+        function showPage(page) {
+            // Hide all page content
+            document.querySelectorAll('.page-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show the requested page
+            const pageElement = document.querySelector(`.page-content[data-role="${state.currentRole}"][data-page="${page}"]`);
+            if (pageElement) {
+                pageElement.style.display = 'block';
+                
+                // If this is the join-call page for mentor, start the timer
+                if (state.currentRole === 'mentor' && page === 'join-call') {
+                    startCallTimer();
+                }
+            } else {
+                // Fallback to dashboard if page doesn't exist for this role
+                const dashboardElement = document.querySelector(`.page-content[data-role="${state.currentRole}"][data-page="dashboard"]`);
+                if (dashboardElement) {
+                    dashboardElement.style.display = 'block';
+                }
+            }
+        }
+
+        // Reset the booking flow to initial state
+        function resetBookingFlow() {
+            state.bookingData = {
+                program: 'Career Coaching',
+                mentor: null,
+                mentee: null,
+                time: null
+            };
+            
+            // Reset steps
+            for (let i = 1; i <= 5; i++) {
+                const step = document.getElementById(`step${i}`);
+                step.classList.remove('active', 'completed');
+            }
+            
+            // Set step 1 as active
+            document.getElementById('step1').classList.add('active');
+            
+            // Show step 2 (skipping program selection for simplicity)
+            document.getElementById('bookingStep2').style.display = 'block';
+            document.getElementById('bookingStep3').style.display = 'none';
+            document.getElementById('bookingStep4').style.display = 'none';
+            document.getElementById('bookingStep5').style.display = 'none';
+            document.getElementById('bookingConfirmation').style.display = 'none';
+        }
+
+        // Update the booking flow step
+        function updateBookingStep(fromStep, toStep) {
+            // Update step indicators
+            for (let i = 1; i <= 5; i++) {
+                const step = document.getElementById(`step${i}`);
+                step.classList.remove('active', 'completed');
+                
+                if (i < toStep) {
+                    step.classList.add('completed');
+                } else if (i === toStep) {
+                    step.classList.add('active');
+                }
+            }
+            
+            // Show/hide step content
+            document.getElementById('bookingStep2').style.display = 'none';
+            document.getElementById('bookingStep3').style.display = 'none';
+            document.getElementById('bookingStep4').style.display = 'none';
+            document.getElementById('bookingStep5').style.display = 'none';
+            document.getElementById('bookingConfirmation').style.display = 'none';
+            
+            // Show the current step
+            if (toStep === 1 || toStep === 2) {
+                document.getElementById('bookingStep2').style.display = 'block';
+            } else if (toStep === 3) {
+                document.getElementById('bookingStep3').style.display = 'block';
+            } else if (toStep === 4) {
+                // Skip time selection for demo purposes, go directly to confirmation
+                document.getElementById('bookingStep5').style.display = 'block';
+            } else if (toStep === 5) {
+                document.getElementById('bookingStep5').style.display = 'block';
+            }
+        }
+
+        // Start the call timer for the mentor call simulation
+        function startCallTimer() {
+            state.callTimer = 765; // 12:45 in seconds
+            updateCallTimerDisplay();
+            
+            if (state.timerInterval) {
+                clearInterval(state.timerInterval);
+            }
+            
+            state.timerInterval = setInterval(function() {
+                state.callTimer++;
+                updateCallTimerDisplay();
+            }, 1000);
+        }
+
+        // Update the call timer display
+        function updateCallTimerDisplay() {
+            const minutes = Math.floor(state.callTimer / 60);
+            const seconds = state.callTimer % 60;
+            document.getElementById('callTimer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Complete the session with the specified outcome
+        function completeSession(outcome) {
+            // Close the modal
+            document.getElementById('sessionOutcomeModal').classList.remove('active');
+            
+            // Show a confirmation message
+            let message = '';
+            switch(outcome) {
+                case 'completed':
+                    message = 'Session marked as completed. Invoice generated and payout processed automatically.';
+                    break;
+                case 'no-show':
+                    message = 'Session marked as no-show. Credit refunded to mentee automatically.';
+                    break;
+                case 'dropped':
+                    message = 'Session marked as dropped. Auto-rescheduled based on system rules.';
+                    break;
+            }
+            
+            showNotification(`Session outcome recorded: ${message}`);
+            
+            // Switch to org admin and show billing page
+            setTimeout(() => {
+                switchRole('org-admin');
+                navigateToPage('billing-payouts');
+                showNotification('Now viewing automated billing results for the completed session.');
+            }, 1500);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                background: var(--primary-blue);
+                color: white;
+                padding: 12px 20px;
+                border-radius: var(--border-radius-sm);
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                font-weight: 500;
+                max-width: 350px;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            // Add slide in animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
 </body>
 </html>

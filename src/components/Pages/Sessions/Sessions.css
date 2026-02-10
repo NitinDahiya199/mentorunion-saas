@@ -1,0 +1,153 @@
+.sessions-page {
+  padding: 40px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.sessions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.sessions-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 8px 0;
+}
+
+.sessions-subtitle {
+  font-size: 16px;
+  color: #718096;
+  margin: 0;
+}
+
+.sessions-book-btn {
+  background: #2d3748;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.sessions-book-btn:hover {
+  background: #1a202c;
+}
+
+.sessions-table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sessions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sessions-table thead {
+  background: #f7fafc;
+}
+
+.sessions-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4a5568;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.sessions-table td {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+}
+
+.sessions-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.session-id {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.session-agenda {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.session-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.session-status-green {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.session-status-blue {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.session-action-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.session-action-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.session-simulate-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.session-simulate-btn:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .sessions-page {
+    padding: 20px;
+  }
+
+  .sessions-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sessions-table-container {
+    overflow-x: auto;
+  }
+}

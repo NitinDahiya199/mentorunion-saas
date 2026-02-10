@@ -1,0 +1,139 @@
+.platform-revenue-page {
+  padding: 40px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.platform-revenue-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 32px 0;
+}
+
+.platform-revenue-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.platform-revenue-summary-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.platform-revenue-card-purple {
+  border-left: 4px solid #9333ea;
+}
+
+.platform-revenue-card-green {
+  border-left: 4px solid #10b981;
+}
+
+.platform-revenue-card-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #718096;
+  margin-bottom: 12px;
+}
+
+.platform-revenue-card-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.platform-revenue-value-purple {
+  color: #9333ea;
+}
+
+.platform-revenue-value-green {
+  color: #10b981;
+}
+
+.platform-revenue-transactions {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.platform-revenue-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 20px 0;
+}
+
+.platform-revenue-table-container {
+  overflow-x: auto;
+}
+
+.platform-revenue-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.platform-revenue-table thead {
+  background: #f7fafc;
+}
+
+.platform-revenue-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4a5568;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.platform-revenue-table td {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+}
+
+.platform-revenue-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.revenue-session {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.revenue-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.revenue-status-green {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.revenue-status-orange {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+@media (max-width: 768px) {
+  .platform-revenue-page {
+    padding: 20px;
+  }
+
+  .platform-revenue-summary-cards {
+    grid-template-columns: 1fr;
+  }
+}

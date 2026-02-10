@@ -1,0 +1,140 @@
+.mentors-page {
+  padding: 40px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.mentors-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.mentors-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 8px 0;
+}
+
+.mentors-subtitle {
+  font-size: 16px;
+  color: #718096;
+  margin: 0;
+}
+
+.mentors-add-btn {
+  background: #2d3748;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.mentors-add-btn:hover {
+  background: #1a202c;
+}
+
+.mentors-table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mentors-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mentors-table thead {
+  background: #f7fafc;
+}
+
+.mentors-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4a5568;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.mentors-table td {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+}
+
+.mentors-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.mentor-name-cell {
+  font-weight: 600;
+}
+
+.mentor-programs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mentor-program-tag {
+  color: #f97316;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.mentor-program-slots {
+  color: #718096;
+  font-size: 13px;
+}
+
+.mentor-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.mentor-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mentor-status-active {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+@media (max-width: 768px) {
+  .mentors-page {
+    padding: 20px;
+  }
+
+  .mentors-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mentors-table-container {
+    overflow-x: auto;
+  }
+}
