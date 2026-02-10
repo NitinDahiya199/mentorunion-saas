@@ -9,6 +9,7 @@ const Sidebar = () => {
   const [platformOrgDropdownOpen, setPlatformOrgDropdownOpen] = useState(false);
   const [sessionsExpanded, setSessionsExpanded] = useState(false);
   const [userManagementExpanded, setUserManagementExpanded] = useState(false);
+  const [adminManagementExpanded, setAdminManagementExpanded] = useState(false);
   const dropdownRef = useRef(null);
   const platformDropdownRef = useRef(null);
 
@@ -29,8 +30,7 @@ const Sidebar = () => {
         { page: 'admin-management', icon: 'fa-user-shield', label: 'Admin Management' },
         { page: 'ticket-raised', icon: 'fa-ticket-alt', label: 'Ticket Raised' },
         { page: 'call-records', icon: 'fa-phone-alt', label: 'Call Records' },
-        { page: 'platform-revenue', icon: 'fa-dollar-sign', label: 'Revenue' },
-        { page: 'platform-config', icon: 'fa-cog', label: 'Configuration' }
+        { page: 'platform-revenue', icon: 'fa-dollar-sign', label: 'Revenue' }
       ]
     },
     'org-admin': {
@@ -292,6 +292,54 @@ const Sidebar = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         navigateToPage('user-config');
+                      }}
+                      href="#"
+                    >
+                      {getIcon('fa-cog', 16)}
+                      <span>Config</span>
+                    </a>
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          // Handle Admin Management as expandable submenu for Platform Admin
+          if (item.page === 'admin-management' && currentRole === 'platform-admin') {
+            return (
+              <div key={item.page} className="nav-item-expandable">
+                <a
+                  className={`nav-item ${adminManagementExpanded ? 'expanded' : ''} ${currentPage === 'add-admin' || currentPage === 'platform-config' || currentPage === 'admin-management' ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setAdminManagementExpanded(!adminManagementExpanded);
+                  }}
+                  href="#"
+                >
+                  {getIcon(item.icon, 16)} 
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${adminManagementExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
+                </a>
+                {adminManagementExpanded && (
+                  <div className="nav-submenu">
+                    <a
+                      className={`nav-submenu-item ${currentPage === 'add-admin' ? 'active' : ''}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateToPage('add-admin');
+                      }}
+                      href="#"
+                    >
+                      {getIcon('fa-user-plus', 16)}
+                      <span>Add Admin</span>
+                    </a>
+                    <a
+                      className={`nav-submenu-item ${currentPage === 'platform-config' ? 'active' : ''}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateToPage('platform-config');
                       }}
                       href="#"
                     >

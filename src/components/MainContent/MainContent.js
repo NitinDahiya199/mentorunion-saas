@@ -74,6 +74,8 @@ const MainContent = () => {
           return <PlatformRevenue />;
         case 'platform-config':
           return <PlatformConfig />;
+        case 'add-admin':
+          return <AddAdmin />;
         default:
           return <PlatformAdminDashboard />;
       }

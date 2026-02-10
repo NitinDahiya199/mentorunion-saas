@@ -534,6 +534,11 @@ h1, h2, h3, h4, h5, h6 {
     border-left: 4px solid var(--mentorunion-purple);
 }
 
+.sidebar.platform-admin-sidebar .nav-submenu-item.active svg,
+.sidebar.platform-admin-sidebar .nav-submenu-item.active i {
+    color: var(--mentorunion-purple);
+}
+
 /* Org Admin specific submenu styling */
 .sidebar.org-admin-sidebar .nav-submenu-item {
     color: var(--text-secondary);
