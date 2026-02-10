@@ -9,9 +9,19 @@ const UserConfig = () => {
     autoApprove: false,
     requireEmailVerification: true,
     allowSelfRegistration: false,
-    maxAdmins: 10,
     sessionTimeout: 30,
-    passwordPolicy: 'medium'
+    passwordPolicy: 'medium',
+    permissions: {
+      userManagement: true,
+      programManagement: true,
+      sessionManagement: true,
+      mentorManagement: true,
+      menteeManagement: true,
+      billingPayouts: false,
+      reportsAnalytics: false,
+      settingsConfiguration: false,
+      ticketManagement: true
+    }
   });
 
   const handleInputChange = (e) => {
@@ -19,6 +29,16 @@ const UserConfig = () => {
     setConfig(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handlePermissionChange = (permissionKey) => {
+    setConfig(prev => ({
+      ...prev,
+      permissions: {
+        ...prev.permissions,
+        [permissionKey]: !prev.permissions[permissionKey]
+      }
     }));
   };
 
@@ -32,9 +52,19 @@ const UserConfig = () => {
       autoApprove: false,
       requireEmailVerification: true,
       allowSelfRegistration: false,
-      maxAdmins: 10,
       sessionTimeout: 30,
-      passwordPolicy: 'medium'
+      passwordPolicy: 'medium',
+      permissions: {
+        userManagement: true,
+        programManagement: true,
+        sessionManagement: true,
+        mentorManagement: true,
+        menteeManagement: true,
+        billingPayouts: false,
+        reportsAnalytics: false,
+        settingsConfiguration: false,
+        ticketManagement: true
+      }
     });
     showNotification('Configuration reset to defaults');
   };
@@ -68,17 +98,146 @@ const UserConfig = () => {
             </div>
 
             <div className="user-config-form-group">
-              <label className="user-config-form-label">Maximum Admins</label>
-              <input
-                type="number"
-                name="maxAdmins"
-                className="user-config-form-input"
-                value={config.maxAdmins}
-                onChange={handleInputChange}
-                min="1"
-                max="50"
-              />
-              <p className="user-config-help-text">Maximum number of admins allowed in your organisation</p>
+              <label className="user-config-form-label">Admin Permissions</label>
+              <p className="user-config-help-text" style={{ marginBottom: '16px' }}>
+                Select the permissions that admins can have in your organisation
+              </p>
+              <div className="user-config-permissions-grid">
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.userManagement}
+                      onChange={() => handlePermissionChange('userManagement')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">User Management</span>
+                      <span className="user-config-switch-description">Add, edit, and manage users</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.programManagement}
+                      onChange={() => handlePermissionChange('programManagement')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Program Management</span>
+                      <span className="user-config-switch-description">Create and manage programs</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.sessionManagement}
+                      onChange={() => handlePermissionChange('sessionManagement')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Session Management</span>
+                      <span className="user-config-switch-description">Schedule and manage sessions</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.mentorManagement}
+                      onChange={() => handlePermissionChange('mentorManagement')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Mentor Management</span>
+                      <span className="user-config-switch-description">Manage mentors and their profiles</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.menteeManagement}
+                      onChange={() => handlePermissionChange('menteeManagement')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Mentee Management</span>
+                      <span className="user-config-switch-description">Manage mentees and their profiles</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.billingPayouts}
+                      onChange={() => handlePermissionChange('billingPayouts')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Billing & Payouts</span>
+                      <span className="user-config-switch-description">Access billing and payment information</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.reportsAnalytics}
+                      onChange={() => handlePermissionChange('reportsAnalytics')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Reports & Analytics</span>
+                      <span className="user-config-switch-description">View reports and analytics</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.settingsConfiguration}
+                      onChange={() => handlePermissionChange('settingsConfiguration')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Settings & Configuration</span>
+                      <span className="user-config-switch-description">Modify organisation settings</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="user-config-permission-item">
+                  <label className="user-config-switch">
+                    <input
+                      type="checkbox"
+                      checked={config.permissions.ticketManagement}
+                      onChange={() => handlePermissionChange('ticketManagement')}
+                    />
+                    <span className="user-config-switch-slider"></span>
+                    <div className="user-config-switch-content">
+                      <span className="user-config-switch-label">Ticket Management</span>
+                      <span className="user-config-switch-description">Handle support tickets</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
             </div>
 
             <div className="user-config-form-group">

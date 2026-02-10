@@ -159,6 +159,37 @@
   line-height: 1.4;
 }
 
+.user-config-permissions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.user-config-permission-item {
+  background: var(--surface-dark);
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  transition: all 0.2s ease;
+}
+
+.user-config-permission-item:hover {
+  border-color: var(--mentorunion-orange);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.1);
+}
+
+.user-config-permission-item .user-config-switch {
+  margin: 0;
+  padding: 16px;
+  background: transparent;
+  border: none;
+}
+
+.user-config-permission-item .user-config-switch:hover {
+  background: transparent;
+  border-color: transparent;
+}
+
 .user-config-actions {
   display: flex;
   gap: 12px;
@@ -209,6 +240,10 @@
 @media (max-width: 768px) {
   .user-config-page {
     padding: 20px;
+  }
+
+  .user-config-permissions-grid {
+    grid-template-columns: 1fr;
   }
 
   .user-config-actions {
