@@ -29,7 +29,8 @@ const Sidebar = () => {
         { page: 'admin-management', icon: 'fa-user-shield', label: 'Admin Management' },
         { page: 'ticket-raised', icon: 'fa-ticket-alt', label: 'Ticket Raised' },
         { page: 'call-records', icon: 'fa-phone-alt', label: 'Call Records' },
-        { page: 'platform-revenue', icon: 'fa-dollar-sign', label: 'Revenue' }
+        { page: 'platform-revenue', icon: 'fa-dollar-sign', label: 'Revenue' },
+        { page: 'platform-config', icon: 'fa-cog', label: 'Configuration' }
       ]
     },
     'org-admin': {

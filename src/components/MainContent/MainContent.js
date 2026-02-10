@@ -26,6 +26,7 @@ import AdminManagement from '../Pages/AdminManagement/AdminManagement';
 import TicketRaised from '../Pages/TicketRaised/TicketRaised';
 import CallRecords from '../Pages/CallRecords/CallRecords';
 import PlatformRevenue from '../Pages/PlatformRevenue/PlatformRevenue';
+import PlatformConfig from '../Pages/PlatformConfig/PlatformConfig';
 import SessionRules from '../Pages/SessionRules/SessionRules';
 import BillingLogic from '../Pages/BillingLogic/BillingLogic';
 import PlatformFeatures from '../Pages/PlatformFeatures/PlatformFeatures';
@@ -71,6 +72,8 @@ const MainContent = () => {
           return <CallRecords />;
         case 'platform-revenue':
           return <PlatformRevenue />;
+        case 'platform-config':
+          return <PlatformConfig />;
         default:
           return <PlatformAdminDashboard />;
       }
