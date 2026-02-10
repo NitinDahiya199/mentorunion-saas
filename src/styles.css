@@ -338,8 +338,10 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
+.mentee-role-pill svg,
 .mentee-role-pill i {
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 .nav-section {
@@ -410,14 +412,17 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-tertiary);
 }
 
+.nav-item.active svg,
 .nav-item.active i {
     color: var(--mentorunion-blue);
 }
 
+.nav-item svg,
 .nav-item i {
     width: 20px;
     font-size: 16px;
     color: var(--text-tertiary);
+    flex-shrink: 0;
 }
 
 .nav-item span {
@@ -439,9 +444,16 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: auto;
     transition: transform 0.2s ease;
     width: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
-.nav-expand-icon.open {
+.nav-expand-icon svg {
+    transition: transform 0.2s ease;
+}
+
+.nav-expand-icon.open svg {
     transform: rotate(180deg);
 }
 
@@ -494,9 +506,11 @@ h1, h2, h3, h4, h5, h6 {
     border-left: 4px solid var(--mentorunion-purple);
 }
 
+.nav-submenu-item svg,
 .nav-submenu-item i {
     width: 16px;
     font-size: 14px;
+    flex-shrink: 0;
     color: var(--text-tertiary);
 }
 
@@ -628,8 +642,10 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 14px 0 rgba(124, 58, 237, 0.2);
 }
 
+.platform-admin-role-pill svg,
 .platform-admin-role-pill i {
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 /* Dark theme for super-admin sidebar */
@@ -674,8 +690,10 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.2);
 }
 
+.super-admin-role-pill svg,
 .super-admin-role-pill i {
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 /* Dark theme for super-admin main content */
@@ -725,8 +743,10 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.2);
 }
 
+.org-admin-role-pill svg,
 .org-admin-role-pill i {
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 .org-summary-card {
@@ -793,8 +813,10 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
+.mentor-role-pill svg,
 .mentor-role-pill i {
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 /* Sidebar Organization Selector for Mentor */
@@ -825,10 +847,12 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--mentorunion-green);
 }
 
+.sidebar-org-selector-btn svg:first-child,
 .sidebar-org-selector-btn i.fas:first-child {
     color: var(--mentorunion-green);
     font-size: 16px;
     width: 20px;
+    flex-shrink: 0;
 }
 
 .sidebar-org-selector-text {
@@ -840,9 +864,16 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 12px;
     color: var(--text-tertiary);
     transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
-.sidebar-org-dropdown-arrow.open {
+.sidebar-org-dropdown-arrow svg {
+    transition: transform 0.2s ease;
+}
+
+.sidebar-org-dropdown-arrow.open svg {
     transform: rotate(180deg);
 }
 
@@ -885,16 +916,20 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--mentorunion-green);
 }
 
+.sidebar-org-dropdown-item.active svg:last-child,
 .sidebar-org-dropdown-item.active i.fas.fa-check {
     margin-left: auto;
     color: var(--mentorunion-green);
     font-size: 12px;
+    flex-shrink: 0;
 }
 
+.sidebar-org-dropdown-item svg:first-child,
 .sidebar-org-dropdown-item i.fas:first-child {
     color: var(--mentorunion-green);
     font-size: 16px;
     width: 20px;
+    flex-shrink: 0;
 }
 
 /* Platform Admin Organization Selector - Purple Theme */
@@ -906,6 +941,7 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--mentorunion-purple);
 }
 
+.sidebar.platform-admin-sidebar .sidebar-org-selector-btn svg:first-child,
 .sidebar.platform-admin-sidebar .sidebar-org-selector-btn i.fas:first-child {
     color: var(--mentorunion-purple);
 }
@@ -915,10 +951,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--mentorunion-purple);
 }
 
+.sidebar.platform-admin-sidebar .sidebar-org-dropdown-item.active svg:last-child,
 .sidebar.platform-admin-sidebar .sidebar-org-dropdown-item.active i.fas.fa-check {
     color: var(--mentorunion-purple);
 }
 
+.sidebar.platform-admin-sidebar .sidebar-org-dropdown-item svg:first-child,
 .sidebar.platform-admin-sidebar .sidebar-org-dropdown-item i.fas:first-child {
     color: var(--mentorunion-purple);
 }

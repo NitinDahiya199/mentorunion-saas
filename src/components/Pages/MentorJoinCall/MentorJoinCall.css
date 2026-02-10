@@ -1,7 +1,10 @@
 .mentor-call-room {
   display: flex;
-  min-height: 100vh;
-  background: #f8f9fa;
+  min-height: calc(100vh - 60px);
+  background: var(--primary-black);
+  padding: 0;
+  margin: -32px;
+  width: calc(100% + 64px);
 }
 
 .mentor-call-room-main {
@@ -9,101 +12,138 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 60px 40px;
+  background: var(--primary-black);
 }
 
 .mentor-call-room-content {
   text-align: center;
   max-width: 600px;
+  width: 100%;
 }
 
 .mentor-call-room-title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
-  color: #2d3748;
-  margin: 0 0 40px 0;
-  text-align: left;
+  color: var(--text-primary);
+  margin: 0 0 60px 0;
+  text-align: center;
+  letter-spacing: -0.5px;
 }
 
 .mentor-call-icon {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  background: #e2e8f0;
+  background: var(--card-bg);
+  border: 2px solid var(--border-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 32px;
+  margin: 0 auto 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.mentor-call-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.2);
+}
+
+.mentor-call-icon svg,
 .mentor-call-icon i {
-  font-size: 48px;
-  color: #718096;
+  font-size: 64px;
+  color: var(--mentorunion-green);
 }
 
 .mentor-call-ready {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
-  margin: 0 0 16px 0;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
+  letter-spacing: -0.5px;
 }
 
 .mentor-call-instruction {
-  font-size: 16px;
-  color: #718096;
-  margin: 0 0 32px 0;
-  line-height: 1.6;
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin: 0 0 48px 0;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mentor-join-call-button {
-  background: #10b981;
+  background: var(--mentorunion-green);
   color: white;
   border: none;
-  padding: 14px 32px;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 18px 48px;
+  border-radius: 12px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: background 0.2s ease, transform 0.1s ease;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .mentor-join-call-button:hover:not(:disabled) {
   background: #059669;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.4);
 }
 
 .mentor-join-call-button:active:not(:disabled) {
   transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 .mentor-join-call-button:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+}
+
+.mentor-join-call-button svg,
+.mentor-join-call-button i {
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
   .mentor-call-room-main {
-    padding: 20px;
+    padding: 40px 20px;
   }
 
   .mentor-call-room-title {
-    font-size: 24px;
-    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
   }
 
   .mentor-call-icon {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
   }
 
+  .mentor-call-icon svg,
   .mentor-call-icon i {
-    font-size: 40px;
+    font-size: 56px;
   }
 
   .mentor-call-ready {
-    font-size: 24px;
+    font-size: 26px;
+  }
+
+  .mentor-call-instruction {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .mentor-join-call-button {
+    padding: 16px 40px;
+    font-size: 16px;
   }
 }

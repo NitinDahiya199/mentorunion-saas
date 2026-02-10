@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
+import { getIcon } from '../Icons/SVGs';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -114,13 +115,13 @@ const Sidebar = () => {
     <nav className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''} ${currentRole === 'mentee' ? 'mentee-sidebar' : ''} ${currentRole === 'mentor' ? 'mentor-sidebar' : ''} ${currentRole === 'org-admin' ? 'org-admin-sidebar' : ''} ${currentRole === 'platform-admin' ? 'platform-admin-sidebar' : ''} ${currentRole === 'super-admin' ? 'super-admin-sidebar' : ''}`}>
       {currentRole === 'mentee' && (
         <div className="mentee-role-pill">
-          <i className="fas fa-user"></i> MENTEE
+          {getIcon('fa-user', 14)} MENTEE
         </div>
       )}
       {currentRole === 'mentor' && (
         <>
           <div className="mentor-role-pill">
-            <i className="fas fa-user"></i> MENTOR
+            {getIcon('fa-user', 14)} MENTOR
           </div>
           {mentorOrganizations && mentorOrganizations.length > 0 && (
             <div className="sidebar-org-selector" ref={dropdownRef}>
@@ -128,9 +129,11 @@ const Sidebar = () => {
                 className="sidebar-org-selector-btn"
                 onClick={() => setOrgDropdownOpen(!orgDropdownOpen)}
               >
-                <i className={`fas ${selectedOrganization?.icon || 'fa-building'}`}></i>
+                {getIcon(selectedOrganization?.icon || 'fa-building', 16)}
                 <span className="sidebar-org-selector-text">{selectedOrganization?.name || 'Select Organization'}</span>
-                <i className={`fas fa-chevron-down sidebar-org-dropdown-arrow ${orgDropdownOpen ? 'open' : ''}`}></i>
+                <span className={`sidebar-org-dropdown-arrow ${orgDropdownOpen ? 'open' : ''}`}>
+                  {getIcon('fa-chevron-down', 12)}
+                </span>
               </button>
               {orgDropdownOpen && (
                 <div className="sidebar-org-dropdown-menu">
@@ -140,10 +143,10 @@ const Sidebar = () => {
                       className={`sidebar-org-dropdown-item ${selectedOrganization?.id === org.id ? 'active' : ''}`}
                       onClick={() => handleOrgSelect(org)}
                     >
-                      <i className={`fas ${org.icon}`}></i>
+                      {getIcon(org.icon, 16)}
                       <span>{org.name}</span>
                       {selectedOrganization?.id === org.id && (
-                        <i className="fas fa-check"></i>
+                        getIcon('fa-check', 12)
                       )}
                     </button>
                   ))}
@@ -155,13 +158,13 @@ const Sidebar = () => {
       )}
       {currentRole === 'org-admin' && (
         <div className="org-admin-role-pill">
-          <i className="fas fa-building"></i> ORGANISATION ADMIN
+          {getIcon('fa-building', 14)} ORGANISATION ADMIN
         </div>
       )}
       {currentRole === 'platform-admin' && (
         <>
           <div className="platform-admin-role-pill">
-            <i className="fas fa-cog"></i> PLATFORM ADMIN
+            {getIcon('fa-cog', 14)} PLATFORM ADMIN
           </div>
           {platformOrganizations && platformOrganizations.length > 0 && (
             <div className="sidebar-org-selector" ref={platformDropdownRef}>
@@ -169,9 +172,11 @@ const Sidebar = () => {
                 className="sidebar-org-selector-btn"
                 onClick={() => setPlatformOrgDropdownOpen(!platformOrgDropdownOpen)}
               >
-                <i className={`fas ${selectedPlatformOrganization?.icon || 'fa-building'}`}></i>
+                {getIcon(selectedPlatformOrganization?.icon || 'fa-building', 16)}
                 <span className="sidebar-org-selector-text">{selectedPlatformOrganization?.name || 'Select Organization'}</span>
-                <i className={`fas fa-chevron-down sidebar-org-dropdown-arrow ${platformOrgDropdownOpen ? 'open' : ''}`}></i>
+                <span className={`sidebar-org-dropdown-arrow ${platformOrgDropdownOpen ? 'open' : ''}`}>
+                  {getIcon('fa-chevron-down', 12)}
+                </span>
               </button>
               {platformOrgDropdownOpen && (
                 <div className="sidebar-org-dropdown-menu">
@@ -181,10 +186,10 @@ const Sidebar = () => {
                       className={`sidebar-org-dropdown-item ${selectedPlatformOrganization?.id === org.id ? 'active' : ''}`}
                       onClick={() => handlePlatformOrgSelect(org)}
                     >
-                      <i className={`fas ${org.icon}`}></i>
+                      {getIcon(org.icon, 16)}
                       <span>{org.name}</span>
                       {selectedPlatformOrganization?.id === org.id && (
-                        <i className="fas fa-check"></i>
+                        getIcon('fa-check', 12)
                       )}
                     </button>
                   ))}
@@ -196,7 +201,7 @@ const Sidebar = () => {
       )}
       {currentRole === 'super-admin' && (
         <div className="super-admin-role-pill">
-          <i className="fas fa-crown"></i> SUPER ADMIN
+          {getIcon('fa-crown', 14)} SUPER ADMIN
         </div>
       )}
       <div className="nav-section">
@@ -214,9 +219,11 @@ const Sidebar = () => {
                   }}
                   href="#"
                 >
-                  <i className={`fas ${item.icon}`}></i> 
+                  {getIcon(item.icon, 16)} 
                   <span>{item.label}</span>
-                  <i className={`fas fa-chevron-down nav-expand-icon ${sessionsExpanded ? 'open' : ''}`}></i>
+                  <span className={`nav-expand-icon ${sessionsExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
                 </a>
                 {sessionsExpanded && (
                   <div className="nav-submenu">
@@ -228,7 +235,7 @@ const Sidebar = () => {
                       }}
                       href="#"
                     >
-                      <i className="fas fa-calendar"></i>
+                      {getIcon('fa-calendar', 16)}
                       <span>Sessions</span>
                     </a>
                     <a
@@ -239,7 +246,7 @@ const Sidebar = () => {
                       }}
                       href="#"
                     >
-                      <i className="fas fa-plus"></i>
+                      {getIcon('fa-plus', 16)}
                       <span>+ Book Session</span>
                     </a>
                   </div>
@@ -260,9 +267,11 @@ const Sidebar = () => {
                   }}
                   href="#"
                 >
-                  <i className={`fas ${item.icon}`}></i> 
+                  {getIcon(item.icon, 16)} 
                   <span>{item.label}</span>
-                  <i className={`fas fa-chevron-down nav-expand-icon ${userManagementExpanded ? 'open' : ''}`}></i>
+                  <span className={`nav-expand-icon ${userManagementExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
                 </a>
                 {userManagementExpanded && (
                   <div className="nav-submenu">
@@ -274,7 +283,7 @@ const Sidebar = () => {
                       }}
                       href="#"
                     >
-                      <i className="fas fa-user-plus"></i>
+                      {getIcon('fa-user-plus', 16)}
                       <span>Add User</span>
                     </a>
                     <a
@@ -285,7 +294,7 @@ const Sidebar = () => {
                       }}
                       href="#"
                     >
-                      <i className="fas fa-cog"></i>
+                      {getIcon('fa-cog', 16)}
                       <span>Config</span>
                     </a>
                   </div>
@@ -305,7 +314,7 @@ const Sidebar = () => {
               }}
               href="#"
             >
-              <i className={`fas ${item.icon}`}></i> {item.label}
+              {getIcon(item.icon, 16)} {item.label}
             </a>
           );
         })}

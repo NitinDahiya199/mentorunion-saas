@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../../context/AppContext';
+import { VideoIcon } from '../../Icons/SVGs';
 import './MentorJoinCall.css';
 
 const MentorJoinCall = () => {
@@ -21,7 +22,7 @@ const MentorJoinCall = () => {
         <div className="mentor-call-room-content">
           <h1 className="mentor-call-room-title">Call Room</h1>
           <div className="mentor-call-icon">
-            <i className="fas fa-video"></i>
+            <VideoIcon size={64} color="var(--mentorunion-green)" />
           </div>
           <h2 className="mentor-call-ready">Ready to Join</h2>
           <p className="mentor-call-instruction">
@@ -32,7 +33,7 @@ const MentorJoinCall = () => {
             onClick={handleJoinCall}
             disabled={isJoining}
           >
-            <i className="fas fa-video"></i>
+            <VideoIcon size={20} color="white" />
             Join Call
           </button>
         </div>

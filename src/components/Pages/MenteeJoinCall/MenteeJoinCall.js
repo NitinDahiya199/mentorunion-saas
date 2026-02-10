@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../../context/AppContext';
+import { VideoIcon } from '../../Icons/SVGs';
 import './MenteeJoinCall.css';
 
 const MenteeJoinCall = () => {
@@ -46,7 +47,7 @@ const MenteeJoinCall = () => {
       <div className="mentee-call-room-main">
         <div className="mentee-call-room-content">
           <div className="mentee-call-icon">
-            <i className="fas fa-video"></i>
+            <VideoIcon size={64} color="var(--mentorunion-purple)" />
           </div>
           <h2 className="mentee-call-ready">Ready to Join</h2>
           <p className="mentee-call-instruction">
@@ -57,7 +58,7 @@ const MenteeJoinCall = () => {
             onClick={handleJoinCall}
             disabled={isJoining}
           >
-            <i className="fas fa-video"></i>
+            <VideoIcon size={20} color="white" />
             Join Call
           </button>
         </div>
