@@ -1,13 +1,13 @@
 .org-admin-dashboard {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
 .org-dashboard-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 32px 0;
 }
 
@@ -19,14 +19,15 @@
 }
 
 .org-summary-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .org-card-orange {
-  border-left: 4px solid #f97316;
+  border-left: 4px solid var(--mentorunion-orange);
 }
 
 .org-card-label {
@@ -34,18 +35,18 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin-bottom: 12px;
 }
 
 .org-card-value {
   font-size: 48px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .org-value-orange {
-  color: #f97316;
+  color: var(--mentorunion-orange);
 }
 
 .org-dashboard-content {
@@ -55,16 +56,17 @@
 }
 
 .org-dashboard-section {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .org-section-title {
   font-size: 20px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 20px 0;
 }
 
@@ -79,8 +81,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background: #f7fafc;
+  background: var(--surface-dark);
   border-radius: 8px;
+  border: 1px solid var(--border-dark);
 }
 
 .org-session-info {
@@ -92,12 +95,12 @@
 .org-session-agenda {
   font-size: 16px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .org-session-date {
   font-size: 14px;
-  color: #718096;
+  color: var(--text-tertiary);
 }
 
 .org-status-badge {
@@ -110,8 +113,9 @@
 }
 
 .org-status-blue {
-  background: #bee3f8;
-  color: #2c5282;
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--mentorunion-blue);
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .org-quick-actions {
@@ -121,9 +125,9 @@
 }
 
 .org-action-btn {
-  background: #2d3748;
-  color: white;
-  border: none;
+  background: var(--surface-dark);
+  color: var(--text-primary);
+  border: 1px solid var(--border-dark);
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -132,12 +136,14 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
   text-align: left;
 }
 
 .org-action-btn:hover {
-  background: #1a202c;
+  background: var(--card-bg);
+  border-color: var(--mentorunion-orange);
+  color: var(--mentorunion-orange);
 }
 
 .org-action-btn i {

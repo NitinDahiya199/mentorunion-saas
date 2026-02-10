@@ -273,27 +273,28 @@ h1, h2, h3, h4, h5, h6 {
     border-left: 4px solid var(--mentorunion-blue);
 }
 
-/* Light theme for mentee sidebar */
+/* Dark theme for mentee sidebar */
 .sidebar.mentee-sidebar {
-    background: white;
+    background: var(--secondary-black);
 }
 
 .sidebar.mentee-sidebar .nav-item {
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .sidebar.mentee-sidebar .nav-item:hover {
-    background: #f7fafc;
-    color: #2d3748;
+    background: var(--surface-dark);
+    color: var(--text-primary);
 }
 
 .sidebar.mentee-sidebar .nav-item.active {
-    background: #ebf8ff;
-    color: #2563eb;
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--mentorunion-purple);
+    border-left: 4px solid var(--mentorunion-purple);
 }
 
 .sidebar.mentee-sidebar .nav-title {
-    color: #718096;
+    color: var(--text-tertiary);
 }
 
 .nav-item.active i {
@@ -316,44 +317,41 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--primary-black);
 }
 
-/* Light theme for mentee main content */
+/* Dark theme for all main content */
 .main-content.mentee-main {
-    background: #f8f9fa;
+    background: var(--primary-black);
 }
 
-/* Light theme for mentor main content */
 .main-content.mentor-main {
-    background: #f8f9fa;
+    background: var(--primary-black);
 }
 
-/* Light theme for org-admin main content */
 .main-content.org-admin-main {
-    background: #f8f9fa;
+    background: var(--primary-black);
 }
 
-/* Light theme for platform-admin main content */
 .main-content.platform-admin-main {
-    background: #f8f9fa;
+    background: var(--primary-black);
 }
 
-/* Light theme for platform-admin sidebar */
+/* Dark theme for platform-admin sidebar */
 .sidebar.platform-admin-sidebar {
-    background: white;
+    background: var(--secondary-black);
 }
 
 .sidebar.platform-admin-sidebar .nav-item {
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .sidebar.platform-admin-sidebar .nav-item:hover {
-    background: #f7fafc;
-    color: #2d3748;
+    background: var(--surface-dark);
+    color: var(--text-primary);
 }
 
 .sidebar.platform-admin-sidebar .nav-item.active {
-    background: #f3e8ff;
-    color: #9333ea;
-    border-left: 4px solid #9333ea;
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--mentorunion-purple);
+    border-left: 4px solid var(--mentorunion-purple);
 }
 
 .sidebar.platform-admin-sidebar .nav-title {
@@ -361,7 +359,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .platform-admin-role-pill {
-    background: #9333ea;
+    background: var(--mentorunion-purple);
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
@@ -375,30 +373,31 @@ h1, h2, h3, h4, h5, h6 {
     margin: 20px;
     margin-bottom: 24px;
     justify-content: center;
+    box-shadow: 0 4px 14px 0 rgba(124, 58, 237, 0.2);
 }
 
 .platform-admin-role-pill i {
     font-size: 14px;
 }
 
-/* Light theme for super-admin sidebar */
+/* Dark theme for super-admin sidebar */
 .sidebar.super-admin-sidebar {
-    background: white;
+    background: var(--secondary-black);
 }
 
 .sidebar.super-admin-sidebar .nav-item {
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .sidebar.super-admin-sidebar .nav-item:hover {
-    background: #f7fafc;
-    color: #2d3748;
+    background: var(--surface-dark);
+    color: var(--text-primary);
 }
 
 .sidebar.super-admin-sidebar .nav-item.active {
-    background: #fce7f3;
-    color: #ef4444;
-    border-left: 4px solid #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--mentorunion-red);
+    border-left: 4px solid var(--mentorunion-red);
 }
 
 .sidebar.super-admin-sidebar .nav-title {
@@ -406,8 +405,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .super-admin-role-pill {
-    background: #fce7f3;
-    color: #ef4444;
+    background: var(--mentorunion-red);
+    color: white;
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 12px;
@@ -420,36 +419,36 @@ h1, h2, h3, h4, h5, h6 {
     margin: 20px;
     margin-bottom: 24px;
     justify-content: center;
-    border: 1px solid #fbcfe8;
+    box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.2);
 }
 
 .super-admin-role-pill i {
     font-size: 14px;
 }
 
-/* Light theme for super-admin main content */
+/* Dark theme for super-admin main content */
 .main-content.super-admin-main {
-    background: #f8f9fa;
+    background: var(--primary-black);
 }
 
-/* Light theme for org-admin sidebar */
+/* Dark theme for org-admin sidebar */
 .sidebar.org-admin-sidebar {
-    background: white;
+    background: var(--secondary-black);
 }
 
 .sidebar.org-admin-sidebar .nav-item {
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .sidebar.org-admin-sidebar .nav-item:hover {
-    background: #f7fafc;
-    color: #2d3748;
+    background: var(--surface-dark);
+    color: var(--text-primary);
 }
 
 .sidebar.org-admin-sidebar .nav-item.active {
-    background: #fff7ed;
-    color: #f97316;
-    border-left: 4px solid #f97316;
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--mentorunion-orange);
+    border-left: 4px solid var(--mentorunion-orange);
 }
 
 .sidebar.org-admin-sidebar .nav-title {
@@ -457,8 +456,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .org-admin-role-pill {
-    background: #fff7ed;
-    color: #f97316;
+    background: var(--mentorunion-orange);
+    color: white;
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 12px;
@@ -471,7 +470,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 20px;
     margin-bottom: 24px;
     justify-content: center;
-    border: 1px solid #fed7aa;
+    box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.2);
 }
 
 .org-admin-role-pill i {
@@ -479,7 +478,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .org-summary-card {
-    background: #f7fafc;
+    background: var(--card-bg);
+    border: 1px solid var(--border-dark);
     border-radius: 8px;
     padding: 16px;
     margin: 20px;
@@ -490,38 +490,38 @@ h1, h2, h3, h4, h5, h6 {
 .org-summary-title {
     font-size: 14px;
     font-weight: 700;
-    color: #2d3748;
+    color: var(--text-primary);
     margin: 0 0 8px 0;
 }
 
 .org-summary-stats {
     font-size: 12px;
-    color: #718096;
+    color: var(--text-tertiary);
     margin: 4px 0;
 }
 
-/* Light theme for mentor sidebar */
+/* Dark theme for mentor sidebar */
 .sidebar.mentor-sidebar {
-    background: white;
+    background: var(--secondary-black);
 }
 
 .sidebar.mentor-sidebar .nav-item {
-    color: #4a5568;
+    color: var(--text-secondary);
 }
 
 .sidebar.mentor-sidebar .nav-item:hover {
-    background: #f7fafc;
-    color: #2d3748;
+    background: var(--surface-dark);
+    color: var(--text-primary);
 }
 
 .sidebar.mentor-sidebar .nav-item.active {
-    background: #c6f6d5;
-    color: #22543d;
-    border-left: 4px solid #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--mentorunion-green);
+    border-left: 4px solid var(--mentorunion-green);
 }
 
 .sidebar.mentor-sidebar .nav-title {
-    color: #718096;
+    color: var(--text-tertiary);
 }
 
 .mentor-role-pill {

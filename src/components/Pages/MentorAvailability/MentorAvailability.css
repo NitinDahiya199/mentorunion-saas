@@ -1,6 +1,6 @@
 .mentor-availability-page {
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--primary-black);
   padding: 40px 20px;
 }
 
@@ -12,7 +12,7 @@
 .mentor-availability-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 40px 0;
 }
 
@@ -23,7 +23,7 @@
 .mentor-section-title {
   font-size: 20px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 20px 0;
 }
 
@@ -34,7 +34,8 @@
 }
 
 .mentor-active-slot-card {
-  background: #c6f6d5;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
   border-radius: 8px;
   padding: 12px 20px;
   display: flex;
@@ -47,7 +48,7 @@
 .mentor-slot-time {
   font-size: 16px;
   font-weight: 600;
-  color: #22543d;
+  color: var(--mentorunion-green);
 }
 
 .mentor-active-badge {
@@ -68,16 +69,17 @@
 }
 
 .mentor-day-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .mentor-day-name {
   font-size: 18px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 16px 0;
 }
 
@@ -88,9 +90,9 @@
 }
 
 .mentor-time-slot-btn {
-  background: #e2e8f0;
-  color: #4a5568;
-  border: none;
+  background: var(--surface-dark);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-dark);
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 14px;
@@ -101,18 +103,21 @@
 }
 
 .mentor-time-slot-btn:hover {
-  background: #cbd5e0;
+  background: var(--card-bg);
+  border-color: var(--mentorunion-green);
+  color: var(--text-primary);
   transform: translateY(-1px);
 }
 
 .mentor-time-slot-btn.selected {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border-color: var(--mentorunion-green);
   font-weight: 600;
 }
 
 .mentor-save-availability-btn {
-  background: #2d3748;
+  background: var(--mentorunion-blue);
   color: white;
   border: none;
   padding: 14px 32px;
@@ -128,7 +133,7 @@
 }
 
 .mentor-save-availability-btn:hover {
-  background: #1a202c;
+  background: var(--mentorunion-blue-dark);
   transform: translateY(-1px);
 }
 

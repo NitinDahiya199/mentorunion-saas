@@ -1,6 +1,6 @@
 .sessions-page {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
@@ -14,18 +14,18 @@
 .sessions-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .sessions-subtitle {
   font-size: 16px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
 .sessions-book-btn {
-  background: #2d3748;
+  background: var(--mentorunion-orange);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -40,14 +40,15 @@
 }
 
 .sessions-book-btn:hover {
-  background: #1a202c;
+  background: #ea580c;
 }
 
 .sessions-table-container {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .sessions-table {
@@ -56,7 +57,7 @@
 }
 
 .sessions-table thead {
-  background: #f7fafc;
+  background: var(--surface-dark);
 }
 
 .sessions-table th {
@@ -66,28 +67,28 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #4a5568;
-  border-bottom: 2px solid #e2e8f0;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-dark);
 }
 
 .sessions-table td {
   padding: 20px;
-  border-bottom: 1px solid #e2e8f0;
-  color: #2d3748;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--text-primary);
 }
 
 .sessions-table tbody tr:hover {
-  background: #f7fafc;
+  background: var(--surface-dark);
 }
 
 .session-id {
   font-weight: 600;
-  color: #4a5568;
+  color: var(--text-secondary);
 }
 
 .session-agenda {
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .session-status-badge {
@@ -100,29 +101,31 @@
 }
 
 .session-status-green {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .session-status-blue {
-  background: #bee3f8;
-  color: #2c5282;
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--mentorunion-blue);
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .session-action-link {
-  color: #2563eb;
+  color: var(--mentorunion-blue);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .session-action-link:hover {
-  color: #1d4ed8;
+  color: var(--mentorunion-blue-light);
   text-decoration: underline;
 }
 
 .session-simulate-btn {
-  background: #2563eb;
+  background: var(--mentorunion-blue);
   color: white;
   border: none;
   padding: 8px 16px;
@@ -134,7 +137,7 @@
 }
 
 .session-simulate-btn:hover {
-  background: #1d4ed8;
+  background: var(--mentorunion-blue-dark);
 }
 
 @media (max-width: 768px) {

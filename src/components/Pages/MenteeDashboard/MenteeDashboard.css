@@ -2,7 +2,7 @@
   padding: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
@@ -14,7 +14,7 @@
 .mentee-page-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -27,16 +27,18 @@
 }
 
 .mentee-session-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mentee-session-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--mentorunion-purple);
 }
 
 .mentee-session-card-header {
@@ -49,7 +51,7 @@
 .mentee-session-title {
   font-size: 20px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -69,17 +71,19 @@
 }
 
 .mentee-status-green {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .mentee-status-blue {
-  background: #bee3f8;
-  color: #2c5282;
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--mentorunion-blue);
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .mentee-join-call-btn {
-  background: #2563eb;
+  background: var(--mentorunion-blue);
   color: white;
   border: none;
   padding: 8px 16px;
@@ -91,7 +95,7 @@
 }
 
 .mentee-join-call-btn:hover {
-  background: #1d4ed8;
+  background: var(--mentorunion-blue-dark);
 }
 
 .mentee-session-details {
@@ -102,7 +106,7 @@
 
 .mentee-session-mentor,
 .mentee-session-date {
-  color: #718096;
+  color: var(--text-tertiary);
   font-size: 14px;
   margin: 0;
 }

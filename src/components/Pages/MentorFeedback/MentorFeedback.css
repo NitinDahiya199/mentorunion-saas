@@ -1,6 +1,6 @@
 .mentor-feedback-page {
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--primary-black);
   padding: 40px 20px;
 }
 
@@ -10,22 +10,23 @@
 }
 
 .mentor-feedback-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .mentor-feedback-title {
   font-size: 28px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .mentor-feedback-subtitle {
   font-size: 16px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0 0 32px 0;
 }
 
@@ -44,7 +45,7 @@
 .mentor-feedback-label {
   font-size: 16px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .mentor-feedback-stars {
@@ -78,32 +79,34 @@
 }
 
 .mentor-star-empty {
-  color: #e2e8f0;
+  color: var(--border-dark);
 }
 
 .mentor-feedback-textarea {
   width: 100%;
   padding: 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-dark);
   border-radius: 8px;
   font-size: 16px;
   font-family: inherit;
-  color: #2d3748;
+  color: var(--text-primary);
+  background: var(--surface-dark);
   resize: vertical;
   transition: border-color 0.2s ease;
 }
 
 .mentor-feedback-textarea:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: var(--mentorunion-blue);
+  background: var(--card-bg);
 }
 
 .mentor-feedback-textarea::placeholder {
-  color: #a0aec0;
+  color: var(--text-tertiary);
 }
 
 .mentor-feedback-submit-btn {
-  background: #2d3748;
+  background: var(--mentorunion-blue);
   color: white;
   border: none;
   padding: 14px 32px;
@@ -116,7 +119,7 @@
 }
 
 .mentor-feedback-submit-btn:hover {
-  background: #1a202c;
+  background: var(--mentorunion-blue-dark);
   transform: translateY(-1px);
 }
 

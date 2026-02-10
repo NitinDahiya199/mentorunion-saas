@@ -1,6 +1,6 @@
 .session-booking-page {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
@@ -11,13 +11,13 @@
 .session-booking-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .session-booking-subtitle {
   font-size: 16px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
@@ -27,7 +27,7 @@
   gap: 8px;
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid var(--border-dark);
 }
 
 .session-booking-step {
@@ -41,13 +41,13 @@
 .session-step-line {
   width: 100%;
   height: 3px;
-  background: #e2e8f0;
+  background: var(--border-dark);
   border-radius: 2px;
   transition: background 0.3s ease;
 }
 
 .session-step-line.active {
-  background: #2d3748;
+  background: var(--mentorunion-orange);
 }
 
 .session-step-line.completed {
@@ -59,19 +59,20 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #a0aec0;
+  color: var(--text-tertiary);
   transition: color 0.3s ease;
 }
 
 .session-step-label.active {
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .session-booking-content {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
+  border: 1px solid var(--border-dark);
   padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .session-booking-step-content {
@@ -83,13 +84,13 @@
 .session-step-title {
   font-size: 24px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .session-step-description {
   font-size: 16px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
@@ -104,8 +105,8 @@
 .session-program-card,
 .session-mentor-card,
 .session-mentee-card {
-  background: #f7fafc;
-  border: 2px solid #e2e8f0;
+  background: var(--surface-dark);
+  border: 2px solid var(--border-dark);
   border-radius: 8px;
   padding: 20px;
   cursor: pointer;
@@ -115,15 +116,15 @@
 .session-program-card:hover,
 .session-mentor-card:hover,
 .session-mentee-card:hover {
-  border-color: #2563eb;
-  background: #ebf8ff;
+  border-color: var(--mentorunion-orange);
+  background: rgba(249, 115, 22, 0.1);
 }
 
 .session-program-card.selected,
 .session-mentor-card.selected,
 .session-mentee-card.selected {
-  border-color: #2563eb;
-  background: #ebf8ff;
+  border-color: var(--mentorunion-orange);
+  background: rgba(249, 115, 22, 0.1);
 }
 
 .session-program-name,
@@ -131,7 +132,7 @@
 .session-mentee-name {
   font-size: 18px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
@@ -139,7 +140,7 @@
 .session-mentor-details,
 .session-mentee-details {
   font-size: 14px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 4px 0;
 }
 
@@ -151,14 +152,14 @@
 
 .session-mentee-credits {
   font-size: 14px;
-  color: #2563eb;
+  color: var(--mentorunion-orange);
   font-weight: 600;
   margin: 4px 0 0 0;
 }
 
 .session-credits-check,
 .session-confirmation-details {
-  background: #f7fafc;
+  background: var(--surface-dark);
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -169,7 +170,7 @@
 .session-credits-check p,
 .session-confirmation-details p {
   margin: 0;
-  color: #2d3748;
+  color: var(--text-primary);
   font-size: 16px;
 }
 
@@ -187,24 +188,24 @@
 
 .session-next-btn,
 .session-confirm-btn {
-  background: #2d3748;
+  background: var(--mentorunion-orange);
   color: white;
   align-self: flex-start;
 }
 
 .session-next-btn:hover,
 .session-confirm-btn:hover {
-  background: #1a202c;
+  background: #ea580c;
 }
 
 .session-back-btn {
   background: transparent;
-  color: #718096;
+  color: var(--text-tertiary);
   margin-top: 12px;
 }
 
 .session-back-btn:hover {
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

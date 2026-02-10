@@ -1,6 +1,6 @@
 .programs-page {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
@@ -14,18 +14,18 @@
 .programs-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .programs-subtitle {
   font-size: 16px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
 .programs-create-btn {
-  background: #2d3748;
+  background: var(--mentorunion-orange);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -40,7 +40,7 @@
 }
 
 .programs-create-btn:hover {
-  background: #1a202c;
+  background: #ea580c;
 }
 
 .programs-list {
@@ -50,10 +50,11 @@
 }
 
 .program-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .program-card-header {
@@ -66,7 +67,7 @@
 .program-name {
   font-size: 24px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -80,8 +81,9 @@
 }
 
 .program-status-active {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .program-metrics {
@@ -90,7 +92,7 @@
   gap: 24px;
   margin-bottom: 24px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .program-metric {
@@ -100,7 +102,7 @@
 .program-metric-value {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
@@ -109,7 +111,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #718096;
+  color: var(--text-tertiary);
 }
 
 .program-agendas {
@@ -121,7 +123,7 @@
 .program-agendas-label {
   font-size: 14px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -132,8 +134,9 @@
 }
 
 .program-agenda-tag {
-  background: #e2e8f0;
-  color: #4a5568;
+  background: var(--surface-dark);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-dark);
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 12px;
