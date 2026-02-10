@@ -3,7 +3,6 @@ import { useApp } from '../../../context/AppContext';
 import './OrgTicketRaised.css';
 
 const OrgTicketRaised = () => {
-  const { showNotification } = useApp();
   const [statusFilter, setStatusFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');

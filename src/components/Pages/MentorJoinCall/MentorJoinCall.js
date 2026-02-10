@@ -4,7 +4,6 @@ import { VideoIcon } from '../../Icons/SVGs';
 import './MentorJoinCall.css';
 
 const MentorJoinCall = () => {
-  const { navigateToPage } = useApp();
   const [isJoining, setIsJoining] = useState(false);
 
   const handleJoinCall = () => {

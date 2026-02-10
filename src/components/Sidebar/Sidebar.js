@@ -212,44 +212,38 @@ const Sidebar = () => {
           if (item.page === 'sessions' && currentRole === 'org-admin') {
             return (
               <div key={item.page} className="nav-item-expandable">
-                <a
+                <button
                   className={`nav-item ${sessionsExpanded ? 'expanded' : ''} ${currentPage === item.page ? 'active' : ''}`}
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     setSessionsExpanded(!sessionsExpanded);
                   }}
-                  href="#"
                 >
                   {getIcon(item.icon, 16)} 
                   <span>{item.label}</span>
                   <span className={`nav-expand-icon ${sessionsExpanded ? 'open' : ''}`}>
                     {getIcon('fa-chevron-down', 12)}
                   </span>
-                </a>
+                </button>
                 {sessionsExpanded && (
                   <div className="nav-submenu">
-                    <a
+                    <button
                       className={`nav-submenu-item ${currentPage === 'sessions' ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                      onClick={() => {
                         navigateToPage('sessions');
                       }}
-                      href="#"
                     >
                       {getIcon('fa-calendar', 16)}
                       <span>Sessions</span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className={`nav-submenu-item ${currentPage === 'session-booking' ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                      onClick={() => {
                         navigateToPage('session-booking');
                       }}
-                      href="#"
                     >
                       {getIcon('fa-plus', 16)}
                       <span>+ Book Session</span>
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>
@@ -260,44 +254,38 @@ const Sidebar = () => {
           if (item.page === 'user-management' && currentRole === 'org-admin') {
             return (
               <div key={item.page} className="nav-item-expandable">
-                <a
+                <button
                   className={`nav-item ${userManagementExpanded ? 'expanded' : ''} ${currentPage === 'add-admin' || currentPage === 'user-config' ? 'active' : ''}`}
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     setUserManagementExpanded(!userManagementExpanded);
                   }}
-                  href="#"
                 >
                   {getIcon(item.icon, 16)} 
                   <span>{item.label}</span>
                   <span className={`nav-expand-icon ${userManagementExpanded ? 'open' : ''}`}>
                     {getIcon('fa-chevron-down', 12)}
                   </span>
-                </a>
+                </button>
                 {userManagementExpanded && (
                   <div className="nav-submenu">
-                    <a
+                    <button
                       className={`nav-submenu-item ${currentPage === 'add-admin' ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                      onClick={() => {
                         navigateToPage('add-admin');
                       }}
-                      href="#"
                     >
                       {getIcon('fa-user-plus', 16)}
                       <span>Add User</span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className={`nav-submenu-item ${currentPage === 'user-config' ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                      onClick={() => {
                         navigateToPage('user-config');
                       }}
-                      href="#"
                     >
                       {getIcon('fa-cog', 16)}
                       <span>Config</span>
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>
@@ -308,44 +296,38 @@ const Sidebar = () => {
           if (item.page === 'admin-management' && currentRole === 'platform-admin') {
             return (
               <div key={item.page} className="nav-item-expandable">
-                <a
+                <button
                   className={`nav-item ${adminManagementExpanded ? 'expanded' : ''} ${currentPage === 'add-admin' || currentPage === 'platform-config' || currentPage === 'admin-management' ? 'active' : ''}`}
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     setAdminManagementExpanded(!adminManagementExpanded);
                   }}
-                  href="#"
                 >
                   {getIcon(item.icon, 16)} 
                   <span>{item.label}</span>
                   <span className={`nav-expand-icon ${adminManagementExpanded ? 'open' : ''}`}>
                     {getIcon('fa-chevron-down', 12)}
                   </span>
-                </a>
+                </button>
                 {adminManagementExpanded && (
                   <div className="nav-submenu">
-                    <a
+                    <button
                       className={`nav-submenu-item ${currentPage === 'add-admin' ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                      onClick={() => {
                         navigateToPage('add-admin');
                       }}
-                      href="#"
                     >
                       {getIcon('fa-user-plus', 16)}
                       <span>Add Admin</span>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       className={`nav-submenu-item ${currentPage === 'platform-config' ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                      onClick={() => {
                         navigateToPage('platform-config');
                       }}
-                      href="#"
                     >
                       {getIcon('fa-cog', 16)}
                       <span>Config</span>
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>
@@ -354,17 +336,15 @@ const Sidebar = () => {
           
           // Regular navigation items
           return (
-            <a
+            <button
               key={item.page}
               className={`nav-item ${currentPage === item.page ? 'active' : ''}`}
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={() => {
                 navigateToPage(item.page);
               }}
-              href="#"
             >
               {getIcon(item.icon, 16)} {item.label}
-            </a>
+            </button>
           );
         })}
       </div>

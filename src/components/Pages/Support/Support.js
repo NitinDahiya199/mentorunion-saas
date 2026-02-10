@@ -1,5 +1,4 @@
 import React from 'react';
-import { useApp } from '../../../context/AppContext';
 import './Support.css';
 
 const Support = () => {

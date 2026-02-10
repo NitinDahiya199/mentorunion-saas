@@ -3,7 +3,7 @@ import { useApp } from '../../../context/AppContext';
 import './PlatformAdminDashboard.css';
 
 const PlatformAdminDashboard = () => {
-  const { openModal, selectedPlatformOrganization, platformOrganizations } = useApp();
+  const { selectedPlatformOrganization, platformOrganizations } = useApp();
 
   // Calculate totals across all organizations or show selected organization data
   const totalOrganisations = platformOrganizations?.length || 0;

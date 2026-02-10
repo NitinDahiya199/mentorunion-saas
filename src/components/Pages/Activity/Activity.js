@@ -3,7 +3,6 @@ import { useApp } from '../../../context/AppContext';
 import './Activity.css';
 
 const Activity = () => {
-  const { showNotification } = useApp();
   const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 

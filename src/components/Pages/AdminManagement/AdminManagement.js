@@ -3,7 +3,7 @@ import { useApp } from '../../../context/AppContext';
 import './AdminManagement.css';
 
 const AdminManagement = () => {
-  const { showNotification, selectedPlatformOrganization, platformOrganizations } = useApp();
+  const { showNotification, selectedPlatformOrganization } = useApp();
   const [searchQuery, setSearchQuery] = useState('');
 
   // Sample admin data - in real app, this would come from API based on selected organization

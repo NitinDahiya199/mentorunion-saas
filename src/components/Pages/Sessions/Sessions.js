@@ -78,7 +78,7 @@ const Sessions = () => {
                 </td>
                 <td>
                   {session.status === 'COMPLETED' ? (
-                    <a href="#" className="session-action-link">View</a>
+                    <button className="session-action-link" onClick={() => navigateToPage('session-details')}>View</button>
                   ) : (
                     <button className="session-simulate-btn">
                       Simulate →

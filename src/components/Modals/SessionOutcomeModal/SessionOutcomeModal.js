@@ -17,6 +17,9 @@ const SessionOutcomeModal = ({ onClose }) => {
       case 'dropped':
         message = 'Session marked as dropped. Auto-rescheduled based on system rules.';
         break;
+      default:
+        message = 'Session outcome recorded.';
+        break;
     }
     
     showNotification(`Session outcome recorded: ${message}`);

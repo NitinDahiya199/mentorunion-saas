@@ -4,7 +4,6 @@ import { VideoIcon } from '../../Icons/SVGs';
 import './MenteeJoinCall.css';
 
 const MenteeJoinCall = () => {
-  const { navigateToPage } = useApp();
   const [isJoining, setIsJoining] = useState(false);
 
   const sessions = [
