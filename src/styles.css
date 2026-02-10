@@ -373,12 +373,28 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     width: 100%;
     box-sizing: border-box;
+    /* Reset button styles */
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
 }
 
 .nav-item:hover {
     background: var(--surface-dark);
     color: var(--text-primary);
     transform: translateX(4px);
+}
+
+.nav-item:focus {
+    outline: none;
+    background: var(--surface-dark);
+}
+
+.nav-item:focus-visible {
+    outline: 2px solid var(--mentorunion-blue);
+    outline-offset: 2px;
 }
 
 .nav-item.active {
@@ -492,11 +508,28 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     font-size: 14px;
     padding-left: 48px;
+    /* Reset button styles */
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .nav-submenu-item:hover {
     background: var(--surface-dark);
     color: var(--text-primary);
+}
+
+.nav-submenu-item:focus {
+    outline: none;
+    background: var(--surface-dark);
+}
+
+.nav-submenu-item:focus-visible {
+    outline: 2px solid var(--mentorunion-purple);
+    outline-offset: 2px;
 }
 
 .nav-submenu-item.active {
