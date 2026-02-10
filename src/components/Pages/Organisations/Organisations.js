@@ -3,20 +3,10 @@ import { useApp } from '../../../context/AppContext';
 import './Organisations.css';
 
 const Organisations = () => {
-  const { showNotification } = useApp();
+  const { showNotification, platformOrganizations, selectedPlatformOrganization, setSelectedPlatformOrganization } = useApp();
 
-  const organisations = [
-    {
-      id: 1,
-      name: 'Acadify Learning',
-      admin: 'Priya Sharma',
-      email: 'priya@acadify.com',
-      mentors: 12,
-      mentees: 48,
-      status: 'ACTIVE',
-      modules: '4 enabled'
-    }
-  ];
+  // Use platform organizations data
+  const organisations = platformOrganizations || [];
 
   const handleCreateOrganisation = () => {
     showNotification('Create Organisation functionality would open a modal here.');
@@ -49,17 +39,25 @@ const Organisations = () => {
           </thead>
           <tbody>
             {organisations.map((org) => (
-              <tr key={org.id}>
+              <tr 
+                key={org.id}
+                className={selectedPlatformOrganization?.id === org.id ? 'selected-row' : ''}
+                onClick={() => setSelectedPlatformOrganization(org)}
+                style={{ cursor: 'pointer' }}
+              >
                 <td className="org-name-cell">
                   <strong>{org.name}</strong>
+                  {selectedPlatformOrganization?.id === org.id && (
+                    <i className="fas fa-check org-selected-icon"></i>
+                  )}
                 </td>
                 <td>{org.admin}</td>
                 <td>{org.email}</td>
                 <td>{org.mentors}</td>
                 <td>{org.mentees}</td>
                 <td>
-                  <span className="org-status-badge org-status-active">
-                    {org.status}
+                  <span className={`org-status-badge ${org.status === 'active' ? 'org-status-active' : 'org-status-pending'}`}>
+                    {org.status.toUpperCase()}
                   </span>
                 </td>
                 <td>{org.modules}</td>

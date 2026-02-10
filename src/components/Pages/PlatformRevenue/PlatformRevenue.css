@@ -1,13 +1,13 @@
 .platform-revenue-page {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
 .platform-revenue-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 32px 0;
 }
 
@@ -19,18 +19,19 @@
 }
 
 .platform-revenue-summary-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .platform-revenue-card-purple {
-  border-left: 4px solid #9333ea;
+  border-left: 4px solid var(--mentorunion-purple);
 }
 
 .platform-revenue-card-green {
-  border-left: 4px solid #10b981;
+  border-left: 4px solid var(--mentorunion-green);
 }
 
 .platform-revenue-card-label {
@@ -38,35 +39,36 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin-bottom: 12px;
 }
 
 .platform-revenue-card-value {
   font-size: 48px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
 }
 
 .platform-revenue-value-purple {
-  color: #9333ea;
+  color: var(--mentorunion-purple);
 }
 
 .platform-revenue-value-green {
-  color: #10b981;
+  color: var(--mentorunion-green);
 }
 
 .platform-revenue-transactions {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .platform-revenue-section-title {
   font-size: 20px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 20px 0;
 }
 
@@ -80,7 +82,7 @@
 }
 
 .platform-revenue-table thead {
-  background: #f7fafc;
+  background: var(--surface-dark);
 }
 
 .platform-revenue-table th {
@@ -90,23 +92,23 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #4a5568;
-  border-bottom: 2px solid #e2e8f0;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-dark);
 }
 
 .platform-revenue-table td {
   padding: 20px;
-  border-bottom: 1px solid #e2e8f0;
-  color: #2d3748;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--text-primary);
 }
 
 .platform-revenue-table tbody tr:hover {
-  background: #f7fafc;
+  background: var(--surface-dark);
 }
 
 .revenue-session {
   font-weight: 600;
-  color: #4a5568;
+  color: var(--text-primary);
 }
 
 .revenue-status-badge {
@@ -119,13 +121,15 @@
 }
 
 .revenue-status-green {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .revenue-status-orange {
-  background: #fed7aa;
-  color: #9a3412;
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--mentorunion-orange);
+  border: 1px solid rgba(249, 115, 22, 0.3);
 }
 
 @media (max-width: 768px) {

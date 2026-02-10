@@ -1,14 +1,40 @@
 .platform-admin-dashboard {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
+}
+
+.platform-dashboard-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
 .platform-dashboard-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
-  margin: 0 0 32px 0;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.platform-org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.platform-org-badge i {
+  color: var(--mentorunion-purple);
+  font-size: 14px;
 }
 
 .platform-summary-cards {
@@ -19,10 +45,11 @@
 }
 
 .platform-summary-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .platform-card-purple {
@@ -38,14 +65,20 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin-bottom: 12px;
 }
 
 .platform-card-value {
   font-size: 48px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
+}
+
+.platform-card-value.platform-value-text {
+  font-size: 20px;
+  word-break: break-word;
+  line-height: 1.3;
 }
 
 .platform-value-purple {
@@ -57,22 +90,23 @@
 }
 
 .platform-recent-activity {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .platform-section-title {
   font-size: 20px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .platform-section-subtitle {
   font-size: 14px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0 0 24px 0;
 }
 
@@ -114,13 +148,13 @@
 
 .platform-activity-message {
   font-size: 16px;
-  color: #2d3748;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .platform-activity-timestamp {
   font-size: 14px;
-  color: #718096;
+  color: var(--text-tertiary);
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,6 @@
 .platform-features-page {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
@@ -11,13 +11,13 @@
 .platform-features-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .platform-features-subtitle {
   font-size: 16px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
@@ -28,25 +28,28 @@
 }
 
 .platform-feature-card {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .platform-feature-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-dark);
 }
 
 .platform-feature-card.feature-enabled {
-  border-left: 4px solid #10b981;
+  border-left: 4px solid var(--mentorunion-green);
 }
 
 .platform-feature-card.feature-disabled {
-  border-left: 4px solid #9ca3af;
-  background: #f9fafb;
+  border-left: 4px solid var(--border-dark);
+  background: var(--surface-dark);
+  opacity: 0.7;
 }
 
 .platform-feature-header {
@@ -59,7 +62,7 @@
 .platform-feature-name {
   font-size: 20px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -89,11 +92,11 @@
 }
 
 .platform-toggle-slider.enabled {
-  background: #10b981;
+  background: var(--mentorunion-green);
 }
 
 .platform-toggle-slider.disabled {
-  background: #9ca3af;
+  background: var(--border-dark);
 }
 
 .platform-toggle-slider:before {
@@ -118,7 +121,7 @@
 
 .platform-feature-description {
   font-size: 14px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 

@@ -3,7 +3,7 @@ import { useApp } from '../../../context/AppContext';
 import './MentorAvailability.css';
 
 const MentorAvailability = () => {
-  const { showNotification } = useApp();
+  const { showNotification, selectedOrganization } = useApp();
   const [selectedSlots, setSelectedSlots] = useState(new Set(['Mon-9-11', 'Wed-14-16', 'Fri-9-11']));
   const [activeSlots, setActiveSlots] = useState(['Mon 10-12', 'Wed 14-16', 'Fri 10-12']);
 
@@ -40,7 +40,15 @@ const MentorAvailability = () => {
   return (
     <div className="mentor-availability-page">
       <div className="mentor-availability-container">
-        <h1 className="mentor-availability-title">Set Availability</h1>
+        <div className="mentor-availability-header">
+          <h1 className="mentor-availability-title">Set Availability</h1>
+          {selectedOrganization && (
+            <div className="mentor-org-badge">
+              <i className={`fas ${selectedOrganization.icon}`}></i>
+              <span>{selectedOrganization.name}</span>
+            </div>
+          )}
+        </div>
 
         <div className="mentor-availability-section">
           <h2 className="mentor-section-title">Current Availability</h2>

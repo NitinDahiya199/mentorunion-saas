@@ -94,8 +94,33 @@
 }
 
 .org-status-active {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.org-status-pending {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.organisations-table tbody tr.selected-row {
+  background: rgba(124, 58, 237, 0.1);
+  border-left: 4px solid var(--mentorunion-purple);
+}
+
+.org-selected-icon {
+  margin-left: 8px;
+  color: var(--mentorunion-purple);
+  font-size: 14px;
+}
+
+.org-name-cell {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 @media (max-width: 768px) {

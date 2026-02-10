@@ -3,28 +3,10 @@ import { useApp } from '../../../context/AppContext';
 import './MentorDashboard.css';
 
 const MentorDashboard = () => {
-  const { navigateToPage } = useApp();
+  const { navigateToPage, selectedOrganization } = useApp();
 
-  const sessions = [
-    {
-      id: 1,
-      title: 'Python Fundamentals',
-      mentee: 'Riya Kapoor',
-      date: '2025-02-10',
-      time: '10:00 AM',
-      status: 'COMPLETED',
-      statusColor: 'green'
-    },
-    {
-      id: 2,
-      title: 'ML Basics',
-      mentee: 'Riya Kapoor',
-      date: '2025-02-17',
-      time: '10:00 AM',
-      status: 'SCHEDULED',
-      statusColor: 'blue'
-    }
-  ];
+  // Get sessions for the selected organization
+  const sessions = selectedOrganization?.sessions || [];
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -38,7 +20,15 @@ const MentorDashboard = () => {
   return (
     <div className="mentor-dashboard">
       <div className="mentor-page-header">
-        <h1 className="mentor-page-title">My Sessions</h1>
+        <div>
+          <h1 className="mentor-page-title">My Sessions</h1>
+          {selectedOrganization && (
+            <div className="mentor-org-badge">
+              <i className={`fas ${selectedOrganization.icon}`}></i>
+              <span>{selectedOrganization.name}</span>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="mentor-sessions-container">

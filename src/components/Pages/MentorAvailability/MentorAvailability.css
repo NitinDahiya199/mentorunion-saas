@@ -9,11 +9,37 @@
   margin: 0 auto;
 }
 
+.mentor-availability-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
 .mentor-availability-title {
   font-size: 32px;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 40px 0;
+  margin: 0;
+}
+
+.mentor-org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mentor-org-badge i {
+  color: var(--mentorunion-green);
+  font-size: 14px;
 }
 
 .mentor-availability-section {

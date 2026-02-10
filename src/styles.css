@@ -85,6 +85,7 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid var(--border-dark);
 }
 
+
 .logo {
     display: flex;
     align-items: center;
@@ -188,6 +189,116 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-tertiary);
 }
 
+/* Organization Selector for Mentor */
+.org-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.org-selector-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 200px;
+}
+
+.org-selector-btn:hover {
+    background: var(--surface-dark);
+    border-color: var(--mentorunion-green);
+}
+
+.org-selector-btn i.fas {
+    color: var(--mentorunion-green);
+    font-size: 16px;
+}
+
+.org-selector-text {
+    flex: 1;
+    text-align: left;
+}
+
+.org-dropdown-arrow {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    transition: transform 0.2s ease;
+}
+
+.org-dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+.org-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    z-index: 1000;
+    min-width: 200px;
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.org-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.org-dropdown-item:hover {
+    background: var(--surface-dark);
+}
+
+.org-dropdown-item.active {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--mentorunion-green);
+}
+
+.org-dropdown-item.active i.fas.fa-check {
+    margin-left: auto;
+    color: var(--mentorunion-green);
+    font-size: 12px;
+}
+
+.org-dropdown-item i.fas:first-child {
+    color: var(--mentorunion-green);
+    font-size: 16px;
+    width: 20px;
+}
+
 /* Sidebar */
 .sidebar {
     width: var(--sidebar-width);
@@ -258,6 +369,8 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .nav-item:hover {
@@ -305,6 +418,145 @@ h1, h2, h3, h4, h5, h6 {
     width: 20px;
     font-size: 16px;
     color: var(--text-tertiary);
+}
+
+.nav-item span {
+    flex: 1;
+}
+
+/* Expandable Navigation Item */
+.nav-item-expandable {
+    margin-bottom: 4px;
+}
+
+.nav-item.expanded {
+    background: var(--surface-dark);
+}
+
+.nav-expand-icon {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-left: auto;
+    transition: transform 0.2s ease;
+    width: auto;
+}
+
+.nav-expand-icon.open {
+    transform: rotate(180deg);
+}
+
+/* Navigation Submenu */
+.nav-submenu {
+    padding-left: 20px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
+        transform: translateY(0);
+    }
+}
+
+.nav-submenu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    margin-bottom: 2px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    padding-left: 48px;
+}
+
+.nav-submenu-item:hover {
+    background: var(--surface-dark);
+    color: var(--text-primary);
+}
+
+.nav-submenu-item.active {
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--mentorunion-purple);
+    font-weight: 600;
+    border-left: 4px solid var(--mentorunion-purple);
+}
+
+.nav-submenu-item i {
+    width: 16px;
+    font-size: 14px;
+    color: var(--text-tertiary);
+}
+
+.nav-submenu-item.active i {
+    color: var(--mentorunion-purple);
+}
+
+/* Platform Admin specific submenu styling */
+.sidebar.platform-admin-sidebar .nav-submenu-item {
+    color: var(--text-secondary);
+}
+
+.sidebar.platform-admin-sidebar .nav-submenu-item:hover {
+    background: var(--surface-dark);
+    color: var(--text-primary);
+}
+
+.sidebar.platform-admin-sidebar .nav-submenu-item.active {
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--mentorunion-purple);
+    border-left: 4px solid var(--mentorunion-purple);
+}
+
+/* Org Admin specific submenu styling */
+.sidebar.org-admin-sidebar .nav-submenu-item {
+    color: var(--text-secondary);
+}
+
+.sidebar.org-admin-sidebar .nav-submenu-item:hover {
+    background: var(--surface-dark);
+    color: var(--text-primary);
+}
+
+.sidebar.org-admin-sidebar .nav-submenu-item.active {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--mentorunion-orange);
+    border-left: 4px solid var(--mentorunion-orange);
+}
+
+.sidebar.org-admin-sidebar .nav-submenu-item.active i {
+    color: var(--mentorunion-orange);
+}
+
+.nav-submenu-check {
+    margin-left: auto;
+    color: var(--mentorunion-purple);
+    font-size: 12px;
+}
+
+.nav-submenu-badge {
+    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
 }
 
 /* Main Content */
@@ -545,6 +797,132 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
 }
 
+/* Sidebar Organization Selector for Mentor */
+.sidebar-org-selector {
+    position: relative;
+    margin: 0 20px 20px 20px;
+}
+
+.sidebar-org-selector-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.sidebar-org-selector-btn:hover {
+    background: var(--surface-dark);
+    border-color: var(--mentorunion-green);
+}
+
+.sidebar-org-selector-btn i.fas:first-child {
+    color: var(--mentorunion-green);
+    font-size: 16px;
+    width: 20px;
+}
+
+.sidebar-org-selector-text {
+    flex: 1;
+    text-align: left;
+}
+
+.sidebar-org-dropdown-arrow {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    transition: transform 0.2s ease;
+}
+
+.sidebar-org-dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+.sidebar-org-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    z-index: 1000;
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+.sidebar-org-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.sidebar-org-dropdown-item:hover {
+    background: var(--surface-dark);
+}
+
+.sidebar-org-dropdown-item.active {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--mentorunion-green);
+}
+
+.sidebar-org-dropdown-item.active i.fas.fa-check {
+    margin-left: auto;
+    color: var(--mentorunion-green);
+    font-size: 12px;
+}
+
+.sidebar-org-dropdown-item i.fas:first-child {
+    color: var(--mentorunion-green);
+    font-size: 16px;
+    width: 20px;
+}
+
+/* Platform Admin Organization Selector - Purple Theme */
+.sidebar.platform-admin-sidebar .sidebar-org-selector-btn {
+    border-color: var(--border-dark);
+}
+
+.sidebar.platform-admin-sidebar .sidebar-org-selector-btn:hover {
+    border-color: var(--mentorunion-purple);
+}
+
+.sidebar.platform-admin-sidebar .sidebar-org-selector-btn i.fas:first-child {
+    color: var(--mentorunion-purple);
+}
+
+.sidebar.platform-admin-sidebar .sidebar-org-dropdown-item.active {
+    background: rgba(124, 58, 237, 0.1);
+    color: var(--mentorunion-purple);
+}
+
+.sidebar.platform-admin-sidebar .sidebar-org-dropdown-item.active i.fas.fa-check {
+    color: var(--mentorunion-purple);
+}
+
+.sidebar.platform-admin-sidebar .sidebar-org-dropdown-item i.fas:first-child {
+    color: var(--mentorunion-purple);
+}
+
 .main-content.full-width {
     margin-left: 0;
 }
@@ -746,6 +1124,10 @@ th {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+td {
+    color: var(--text-primary);
 }
 
 tr {

@@ -18,12 +18,18 @@ import Mentors from '../Pages/Mentors/Mentors';
 import Mentees from '../Pages/Mentees/Mentees';
 import Sessions from '../Pages/Sessions/Sessions';
 import Support from '../Pages/Support/Support';
+import AddAdmin from '../Pages/AddAdmin/AddAdmin';
+import UserConfig from '../Pages/UserConfig/UserConfig';
+import OrgTicketRaised from '../Pages/OrgTicketRaised/OrgTicketRaised';
 import Organisations from '../Pages/Organisations/Organisations';
+import AdminManagement from '../Pages/AdminManagement/AdminManagement';
+import TicketRaised from '../Pages/TicketRaised/TicketRaised';
 import CallRecords from '../Pages/CallRecords/CallRecords';
 import PlatformRevenue from '../Pages/PlatformRevenue/PlatformRevenue';
 import SessionRules from '../Pages/SessionRules/SessionRules';
 import BillingLogic from '../Pages/BillingLogic/BillingLogic';
 import PlatformFeatures from '../Pages/PlatformFeatures/PlatformFeatures';
+import Activity from '../Pages/Activity/Activity';
 import CreateOrgModal from '../Modals/CreateOrgModal/CreateOrgModal';
 import SessionOutcomeModal from '../Modals/SessionOutcomeModal/SessionOutcomeModal';
 import './MainContent.css';
@@ -43,6 +49,8 @@ const MainContent = () => {
           return <BillingLogic />;
         case 'platform-features':
           return <PlatformFeatures />;
+        case 'activity':
+          return <Activity />;
         default:
           return <SessionRules />;
       }
@@ -55,6 +63,10 @@ const MainContent = () => {
           return <PlatformAdminDashboard />;
         case 'organisations':
           return <Organisations />;
+        case 'admin-management':
+          return <AdminManagement />;
+        case 'ticket-raised':
+          return <TicketRaised />;
         case 'call-records':
           return <CallRecords />;
         case 'platform-revenue':
@@ -79,8 +91,14 @@ const MainContent = () => {
           return <Sessions />;
         case 'session-booking':
           return <SessionBooking />;
+        case 'add-admin':
+          return <AddAdmin />;
+        case 'user-config':
+          return <UserConfig />;
         case 'billing-payouts':
           return <BillingPayouts />;
+        case 'org-ticket-raised':
+          return <OrgTicketRaised />;
         case 'support':
           return <Support />;
         default:

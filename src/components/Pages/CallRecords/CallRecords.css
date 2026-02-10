@@ -1,6 +1,6 @@
 .call-records-page {
   padding: 40px;
-  background: #f8f9fa;
+  background: var(--primary-black);
   min-height: 100vh;
 }
 
@@ -11,21 +11,22 @@
 .call-records-title {
   font-size: 32px;
   font-weight: 700;
-  color: #2d3748;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .call-records-subtitle {
   font-size: 16px;
-  color: #718096;
+  color: var(--text-tertiary);
   margin: 0;
 }
 
 .call-records-table-container {
-  background: white;
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .call-records-table {
@@ -34,7 +35,7 @@
 }
 
 .call-records-table thead {
-  background: #f7fafc;
+  background: var(--surface-dark);
 }
 
 .call-records-table th {
@@ -44,24 +45,24 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #4a5568;
-  border-bottom: 2px solid #e2e8f0;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-dark);
 }
 
 .call-records-table td {
   padding: 20px;
-  border-bottom: 1px solid #e2e8f0;
-  color: #2d3748;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--text-primary);
 }
 
 .call-records-table tbody tr:hover {
-  background: #f7fafc;
+  background: var(--surface-dark);
 }
 
 .call-id,
 .call-session {
   font-weight: 600;
-  color: #4a5568;
+  color: var(--text-primary);
 }
 
 .call-quality-badge {
@@ -74,8 +75,9 @@
 }
 
 .call-quality-good {
-  background: #c6f6d5;
-  color: #22543d;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 @media (max-width: 768px) {

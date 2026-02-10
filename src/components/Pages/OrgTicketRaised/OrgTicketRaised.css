@@ -1,0 +1,341 @@
+.org-ticket-raised-page {
+  padding: 40px;
+  background: var(--primary-black);
+  min-height: 100vh;
+}
+
+.org-ticket-raised-header {
+  margin-bottom: 24px;
+}
+
+.org-ticket-raised-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.org-ticket-raised-subtitle {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.org-ticket-raised-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.org-ticket-summary-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.org-ticket-summary-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+  margin-bottom: 8px;
+}
+
+.org-ticket-summary-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.org-ticket-summary-open {
+  color: var(--mentorunion-orange);
+}
+
+.org-ticket-summary-progress {
+  color: var(--mentorunion-blue);
+}
+
+.org-ticket-summary-resolved {
+  color: var(--mentorunion-green);
+}
+
+.org-ticket-summary-mentors {
+  color: var(--mentorunion-purple);
+}
+
+.org-ticket-summary-mentees {
+  color: var(--mentorunion-teal);
+}
+
+.org-ticket-raised-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.org-ticket-search-container {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.org-ticket-search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+.org-ticket-search-input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.org-ticket-search-input:focus {
+  outline: none;
+  border-color: var(--mentorunion-orange);
+  background: var(--card-bg);
+}
+
+.org-ticket-search-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.org-ticket-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.org-ticket-filter-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+}
+
+.org-ticket-filter-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.org-ticket-chip {
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-ticket-chip.active {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: var(--mentorunion-orange);
+  color: var(--mentorunion-orange);
+}
+
+.org-ticket-chip:hover {
+  background: var(--card-bg);
+  border-color: var(--border-dark);
+}
+
+.org-ticket-raised-table-container {
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-dark);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.org-ticket-raised-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.org-ticket-raised-table thead {
+  background: var(--surface-dark);
+}
+
+.org-ticket-raised-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.org-ticket-raised-table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--text-primary);
+}
+
+.org-ticket-raised-table tbody tr:hover {
+  background: var(--surface-dark);
+}
+
+.org-ticket-id-cell {
+  font-weight: 600;
+  color: var(--mentorunion-orange);
+}
+
+.org-ticket-user-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.org-ticket-user-name {
+  font-weight: 600;
+}
+
+.org-ticket-user-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.org-ticket-user-type-mentor {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--mentorunion-purple);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.org-ticket-user-type-mentee {
+  background: rgba(13, 148, 136, 0.15);
+  color: var(--mentorunion-teal);
+  border: 1px solid rgba(13, 148, 136, 0.3);
+}
+
+.org-ticket-subject-cell {
+  max-width: 200px;
+  font-weight: 500;
+}
+
+.org-ticket-description-cell {
+  max-width: 300px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.org-ticket-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.org-ticket-status-open {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--mentorunion-orange);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.org-ticket-status-in-progress {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--mentorunion-blue);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+.org-ticket-status-resolved {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.org-ticket-priority-badge {
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.org-ticket-priority-high {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--mentorunion-red);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.org-ticket-priority-medium {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.org-ticket-priority-low {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--text-secondary);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.org-ticket-time-cell {
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+.org-ticket-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-tertiary);
+}
+
+.org-ticket-empty-state i {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: var(--border-dark);
+  opacity: 0.5;
+}
+
+.org-ticket-empty-state p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .org-ticket-raised-page {
+    padding: 20px;
+  }
+
+  .org-ticket-raised-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .org-ticket-raised-filters {
+    flex-direction: column;
+  }
+
+  .org-ticket-search-container {
+    min-width: 100%;
+  }
+
+  .org-ticket-raised-table-container {
+    overflow-x: auto;
+  }
+}
