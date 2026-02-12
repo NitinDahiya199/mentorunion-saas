@@ -119,6 +119,10 @@ const Sidebar = () => {
     if (currentRole === 'mentor') {
       navigateToPage('mentor-dashboard');
     }
+    // Close sidebar on mobile after selecting organization
+    if (window.innerWidth <= 1200 && !sidebarCollapsed) {
+      toggleSidebar();
+    }
   };
 
   const handlePlatformOrgSelect = (org) => {
@@ -126,6 +130,10 @@ const Sidebar = () => {
     setPlatformOrgDropdownOpen(false);
     // Navigate to platform dashboard when organization changes
     navigateToPage('platform-dashboard');
+    // Close sidebar on mobile after selecting organization
+    if (window.innerWidth <= 1200 && !sidebarCollapsed) {
+      toggleSidebar();
+    }
   };
 
   const orgSummary = currentRole === 'org-admin' ? {
