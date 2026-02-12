@@ -261,7 +261,26 @@ export const AppProvider = ({ children }) => {
       setCurrentPage('platform-dashboard');
     }
   }, [currentRole]);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  
+  // Initialize sidebar as collapsed on mobile
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 1200;
+    }
+    return false;
+  });
+  
+  // Update sidebar state when window resizes
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1200) {
+        setSidebarCollapsed(true);
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const [bookingData, setBookingData] = useState({
     program: 'Career Coaching',
     mentor: null,

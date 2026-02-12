@@ -4,7 +4,7 @@ import { getIcon } from '../Icons/SVGs';
 import './Sidebar.css';
 
 const Sidebar = () => {
-  const { currentRole, currentPage, sidebarCollapsed, navigateToPage, mentorOrganizations, selectedOrganization, setSelectedOrganization, platformOrganizations, selectedPlatformOrganization, setSelectedPlatformOrganization } = useApp();
+  const { currentRole, currentPage, sidebarCollapsed, navigateToPage, toggleSidebar, mentorOrganizations, selectedOrganization, setSelectedOrganization, platformOrganizations, selectedPlatformOrganization, setSelectedPlatformOrganization } = useApp();
   const [orgDropdownOpen, setOrgDropdownOpen] = useState(false);
   const [platformOrgDropdownOpen, setPlatformOrgDropdownOpen] = useState(false);
   const [sessionsExpanded, setSessionsExpanded] = useState(false);
@@ -12,6 +12,30 @@ const Sidebar = () => {
   const [adminManagementExpanded, setAdminManagementExpanded] = useState(false);
   const dropdownRef = useRef(null);
   const platformDropdownRef = useRef(null);
+  
+  // Close all submenus
+  const closeAllSubmenus = () => {
+    setSessionsExpanded(false);
+    setUserManagementExpanded(false);
+    setAdminManagementExpanded(false);
+  };
+  
+  // Close other submenus except the specified one
+  const closeOtherSubmenus = (except) => {
+    if (except !== 'sessions') setSessionsExpanded(false);
+    if (except !== 'user-management') setUserManagementExpanded(false);
+    if (except !== 'admin-management') setAdminManagementExpanded(false);
+  };
+  
+  // Handle navigation and close submenus
+  const handleNavigation = (page) => {
+    navigateToPage(page);
+    closeAllSubmenus();
+    // Close sidebar on mobile after navigation
+    if (window.innerWidth <= 1200 && !sidebarCollapsed) {
+      toggleSidebar();
+    }
+  };
 
   const navigationConfig = {
     'super-admin': {
@@ -215,7 +239,15 @@ const Sidebar = () => {
                 <button
                   className={`nav-item ${sessionsExpanded ? 'expanded' : ''} ${currentPage === item.page ? 'active' : ''}`}
                   onClick={() => {
-                    setSessionsExpanded(!sessionsExpanded);
+                    if (sessionsExpanded) {
+                      // If submenu is open, navigate to sessions page and close it
+                      handleNavigation('sessions');
+                      setSessionsExpanded(false);
+                    } else {
+                      // If submenu is closed, close other submenus and open this one
+                      closeOtherSubmenus('sessions');
+                      setSessionsExpanded(true);
+                    }
                   }}
                 >
                   {getIcon(item.icon, 16)} 
@@ -229,7 +261,8 @@ const Sidebar = () => {
                     <button
                       className={`nav-submenu-item ${currentPage === 'sessions' ? 'active' : ''}`}
                       onClick={() => {
-                        navigateToPage('sessions');
+                        handleNavigation('sessions');
+                        setSessionsExpanded(false);
                       }}
                     >
                       {getIcon('fa-calendar', 16)}
@@ -238,7 +271,8 @@ const Sidebar = () => {
                     <button
                       className={`nav-submenu-item ${currentPage === 'session-booking' ? 'active' : ''}`}
                       onClick={() => {
-                        navigateToPage('session-booking');
+                        handleNavigation('session-booking');
+                        setSessionsExpanded(false);
                       }}
                     >
                       {getIcon('fa-plus', 16)}
@@ -257,7 +291,14 @@ const Sidebar = () => {
                 <button
                   className={`nav-item ${userManagementExpanded ? 'expanded' : ''} ${currentPage === 'add-admin' || currentPage === 'user-config' ? 'active' : ''}`}
                   onClick={() => {
-                    setUserManagementExpanded(!userManagementExpanded);
+                    if (userManagementExpanded) {
+                      // If submenu is open, just close it (no page for user-management itself)
+                      setUserManagementExpanded(false);
+                    } else {
+                      // If submenu is closed, close other submenus and open this one
+                      closeOtherSubmenus('user-management');
+                      setUserManagementExpanded(true);
+                    }
                   }}
                 >
                   {getIcon(item.icon, 16)} 
@@ -271,7 +312,8 @@ const Sidebar = () => {
                     <button
                       className={`nav-submenu-item ${currentPage === 'add-admin' ? 'active' : ''}`}
                       onClick={() => {
-                        navigateToPage('add-admin');
+                        handleNavigation('add-admin');
+                        setUserManagementExpanded(false);
                       }}
                     >
                       {getIcon('fa-user-plus', 16)}
@@ -280,7 +322,8 @@ const Sidebar = () => {
                     <button
                       className={`nav-submenu-item ${currentPage === 'user-config' ? 'active' : ''}`}
                       onClick={() => {
-                        navigateToPage('user-config');
+                        handleNavigation('user-config');
+                        setUserManagementExpanded(false);
                       }}
                     >
                       {getIcon('fa-cog', 16)}
@@ -299,7 +342,15 @@ const Sidebar = () => {
                 <button
                   className={`nav-item ${adminManagementExpanded ? 'expanded' : ''} ${currentPage === 'add-admin' || currentPage === 'platform-config' || currentPage === 'admin-management' ? 'active' : ''}`}
                   onClick={() => {
-                    setAdminManagementExpanded(!adminManagementExpanded);
+                    if (adminManagementExpanded) {
+                      // If submenu is open, navigate to admin-management page and close it
+                      handleNavigation('admin-management');
+                      setAdminManagementExpanded(false);
+                    } else {
+                      // If submenu is closed, close other submenus and open this one
+                      closeOtherSubmenus('admin-management');
+                      setAdminManagementExpanded(true);
+                    }
                   }}
                 >
                   {getIcon(item.icon, 16)} 
@@ -313,7 +364,8 @@ const Sidebar = () => {
                     <button
                       className={`nav-submenu-item ${currentPage === 'add-admin' ? 'active' : ''}`}
                       onClick={() => {
-                        navigateToPage('add-admin');
+                        handleNavigation('add-admin');
+                        setAdminManagementExpanded(false);
                       }}
                     >
                       {getIcon('fa-user-plus', 16)}
@@ -322,7 +374,8 @@ const Sidebar = () => {
                     <button
                       className={`nav-submenu-item ${currentPage === 'platform-config' ? 'active' : ''}`}
                       onClick={() => {
-                        navigateToPage('platform-config');
+                        handleNavigation('platform-config');
+                        setAdminManagementExpanded(false);
                       }}
                     >
                       {getIcon('fa-cog', 16)}
@@ -340,7 +393,8 @@ const Sidebar = () => {
               key={item.page}
               className={`nav-item ${currentPage === item.page ? 'active' : ''}`}
               onClick={() => {
-                navigateToPage(item.page);
+                handleNavigation(item.page);
+                closeAllSubmenus();
               }}
             >
               {getIcon(item.icon, 16)} {item.label}

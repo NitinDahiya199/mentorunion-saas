@@ -321,6 +321,16 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(-100%);
 }
 
+/* Mobile: Sidebar should be collapsed by default */
+@media (max-width: 1200px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar:not(.collapsed) {
+        transform: translateX(0);
+    }
+}
+
 .mentee-role-pill {
     background: #7c3aed;
     color: white;
@@ -1179,6 +1189,17 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-dark);
     background: var(--card-bg);
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Responsive table containers */
+.sessions-table-container,
+.admin-management-table-container,
+.org-ticket-raised-table-container,
+.support-table-container,
+.ticket-raised-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 table {
@@ -1621,25 +1642,56 @@ tr:hover {
     box-shadow: var(--shadow-blue);
 }
 
+/* Mobile Overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 85;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
     .sidebar {
         transform: translateX(-100%);
+        z-index: 90;
     }
-    .sidebar.active {
+    .sidebar:not(.collapsed) {
         transform: translateX(0);
     }
     .main-content {
-        margin-left: 0;
+        margin-left: 0 !important;
     }
     .toggle-sidebar {
         display: block !important;
+    }
+    .sidebar-overlay.active {
+        display: block;
     }
 }
 
 @media (max-width: 992px) {
     .header {
-        padding: 0 24px;
+        padding: 0 20px;
+        height: 64px;
+    }
+    .header .logo {
+        font-size: 20px;
+    }
+    .header .logo-icon {
+        width: 32px;
+        height: 32px;
     }
     .role-switcher {
         display: none;
@@ -1647,8 +1699,23 @@ tr:hover {
     .mobile-role-switcher {
         display: block !important;
     }
+    .user-info {
+        margin-left: 12px;
+    }
+    .user-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+    .user-name {
+        font-size: 13px;
+    }
+    .user-role {
+        font-size: 11px;
+    }
     .main-content {
         padding: 24px;
+        margin-top: 64px;
     }
     .form-row {
         flex-direction: column;
@@ -1669,42 +1736,289 @@ tr:hover {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --header-height: 60px;
+        --sidebar-width: 260px;
+    }
+    
+    .header {
+        padding: 0 16px;
+        height: 60px;
+    }
+    
+    .header .logo {
+        font-size: 18px;
+        gap: 8px;
+    }
+    
+    .header .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .toggle-sidebar {
+        font-size: 20px;
+        margin-right: 12px;
+    }
+    
+    .user-info {
+        margin-left: 8px;
+        gap: 8px;
+    }
+    
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    /* Keep user details visible but compact */
+    .user-details {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .user-name {
+        font-size: 11px;
+        line-height: 1.2;
+    }
+    
+    .user-role {
+        font-size: 9px;
+        line-height: 1.2;
+    }
+    
+    .sidebar {
+        width: 260px;
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
+    
+    .main-content {
+        padding: 20px 16px;
+        margin-top: 60px;
+    }
+    
     .call-participants {
         flex-direction: column;
         gap: 30px;
     }
+    
     .page-header {
         flex-direction: column;
         gap: 20px;
         align-items: flex-start;
+        margin-bottom: 24px;
+        padding-bottom: 20px;
     }
+    
     .page-title h1 {
-        font-size: 28px;
+        font-size: 24px;
     }
+    
+    .page-title p {
+        font-size: 14px;
+    }
+    
     .stat-card {
         flex-direction: column;
         text-align: center;
     }
+    
     .call-timer {
         font-size: 48px;
+    }
+    
+    .nav-section {
+        padding: 20px 16px;
+    }
+    
+    .nav-item {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    
+    .nav-submenu-item {
+        padding: 8px 14px;
+        padding-left: 40px;
+        font-size: 13px;
+    }
+    
+    table {
+        font-size: 13px;
+    }
+    
+    .btn {
+        padding: 10px 18px;
+        font-size: 13px;
     }
 }
 
 @media (max-width: 576px) {
+    :root {
+        --header-height: 56px;
+        --sidebar-width: 100%;
+    }
+    
     .header {
-        padding: 0 16px;
+        padding: 0 12px;
+        height: 56px;
     }
+    
+    .header .logo {
+        font-size: 16px;
+    }
+    
+    .header .logo svg {
+        width: 80px;
+        height: 22px;
+    }
+    
+    .toggle-sidebar {
+        font-size: 18px;
+        margin-right: 8px;
+        padding: 4px;
+    }
+    
+    .user-info {
+        margin-left: 4px;
+    }
+    
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        top: 56px;
+        height: calc(100vh - 56px);
+        z-index: 95;
+    }
+    
     .main-content {
-        padding: 20px 16px;
+        padding: 16px 12px;
+        margin-top: 56px;
     }
+    
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
+    
     .card {
-        padding: 20px;
+        padding: 16px;
     }
+    
+    .page-title h1 {
+        font-size: 20px;
+    }
+    
+    .page-title p {
+        font-size: 13px;
+    }
+    
     .btn {
-        padding: 10px 20px;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .nav-section {
+        padding: 16px 12px;
+    }
+    
+    .nav-item {
+        padding: 12px 12px;
+        font-size: 14px;
+    }
+    
+    .nav-submenu-item {
+        padding: 10px 12px;
+        padding-left: 36px;
+        font-size: 13px;
+    }
+    
+    /* Responsive tables - make scrollable */
+    .table-container,
+    .sessions-table-container,
+    .admin-management-table-container,
+    .org-ticket-raised-table-container,
+    .support-table-container,
+    .ticket-raised-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        display: block;
+        width: 100%;
+    }
+    
+    table {
+        min-width: 600px;
+        font-size: 12px;
+    }
+    
+    table thead th {
+        font-size: 11px;
+        padding: 10px 8px;
+        white-space: nowrap;
+    }
+    
+    table tbody td {
+        font-size: 12px;
+        padding: 10px 8px;
+    }
+    
+    .form-control {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+    
+    .mentee-role-pill,
+    .mentor-role-pill,
+    .org-admin-role-pill,
+    .platform-admin-role-pill,
+    .super-admin-role-pill {
+        font-size: 11px;
+        padding: 8px 16px;
+        margin: 16px 12px;
+    }
+    
+    .sidebar-org-selector {
+        margin: 0 12px 16px;
+    }
+    
+    .sidebar-org-selector-btn {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    /* Responsive tables */
+    .table-container,
+    .sessions-table-container,
+    .admin-management-table-container,
+    .org-ticket-raised-table-container,
+    .support-table-container,
+    .ticket-raised-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        display: block;
+        width: 100%;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+    
+    table thead th {
+        font-size: 11px;
+        padding: 10px 8px;
+        white-space: nowrap;
+    }
+    
+    table tbody td {
+        font-size: 12px;
+        padding: 10px 8px;
     }
 }
 
