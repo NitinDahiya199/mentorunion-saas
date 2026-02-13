@@ -113,15 +113,22 @@
 }
 
 .session-action-link {
-  color: var(--mentorunion-blue);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  background: var(--mentorunion-blue);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
 }
 
 .session-action-link:hover {
-  color: var(--mentorunion-blue-light);
-  text-decoration: underline;
+  background: var(--mentorunion-blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
 
 .session-simulate-btn {
