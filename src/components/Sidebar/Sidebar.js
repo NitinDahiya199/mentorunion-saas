@@ -44,6 +44,7 @@ const Sidebar = () => {
         { page: 'session-rules', icon: 'fa-cog', label: 'Session Rules' },
         { page: 'billing-logic', icon: 'fa-dollar-sign', label: 'Billing & Credits' },
         { page: 'platform-features', icon: 'fa-bolt', label: 'Platform Features' },
+        { page: 'packages', icon: 'fa-box', label: 'Package' },
         { page: 'activity', icon: 'fa-history', label: 'Activity' }
       ]
     },
@@ -51,7 +52,8 @@ const Sidebar = () => {
       title: 'Platform Management',
       items: [
         { page: 'platform-dashboard', icon: 'fa-home', label: 'Dashboard' },
-        { page: 'admin-management', icon: 'fa-user-shield', label: 'Admin Management' },
+        { page: 'admin-management', icon: 'fa-user-shield', label: 'Org Management' },
+        { page: 'platform-packages', icon: 'fa-box', label: 'Package' },
         { page: 'ticket-raised', icon: 'fa-ticket-alt', label: 'Ticket Raised' },
         { page: 'call-records', icon: 'fa-phone-alt', label: 'Call Records' },
         { page: 'platform-revenue', icon: 'fa-dollar-sign', label: 'Revenue' }

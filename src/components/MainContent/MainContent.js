@@ -27,9 +27,11 @@ import TicketRaised from '../Pages/TicketRaised/TicketRaised';
 import CallRecords from '../Pages/CallRecords/CallRecords';
 import PlatformRevenue from '../Pages/PlatformRevenue/PlatformRevenue';
 import PlatformConfig from '../Pages/PlatformConfig/PlatformConfig';
+import PlatformPackages from '../Pages/PlatformPackages/PlatformPackages';
 import SessionRules from '../Pages/SessionRules/SessionRules';
 import BillingLogic from '../Pages/BillingLogic/BillingLogic';
 import PlatformFeatures from '../Pages/PlatformFeatures/PlatformFeatures';
+import Packages from '../Pages/Packages/Packages';
 import Activity from '../Pages/Activity/Activity';
 import CreateOrgModal from '../Modals/CreateOrgModal/CreateOrgModal';
 import SessionOutcomeModal from '../Modals/SessionOutcomeModal/SessionOutcomeModal';
@@ -50,6 +52,8 @@ const MainContent = () => {
           return <BillingLogic />;
         case 'platform-features':
           return <PlatformFeatures />;
+        case 'packages':
+          return <Packages />;
         case 'activity':
           return <Activity />;
         default:
@@ -66,6 +70,8 @@ const MainContent = () => {
           return <Organisations />;
         case 'admin-management':
           return <AdminManagement />;
+        case 'platform-packages':
+          return <PlatformPackages />;
         case 'ticket-raised':
           return <TicketRaised />;
         case 'call-records':
