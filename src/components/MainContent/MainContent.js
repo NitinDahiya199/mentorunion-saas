@@ -33,6 +33,7 @@ import BillingLogic from '../Pages/BillingLogic/BillingLogic';
 import PlatformFeatures from '../Pages/PlatformFeatures/PlatformFeatures';
 import Packages from '../Pages/Packages/Packages';
 import Activity from '../Pages/Activity/Activity';
+import UserManagement from '../Pages/UserManagement/UserManagement';
 import CreateOrgModal from '../Modals/CreateOrgModal/CreateOrgModal';
 import SessionOutcomeModal from '../Modals/SessionOutcomeModal/SessionOutcomeModal';
 import './MainContent.css';
@@ -56,6 +57,8 @@ const MainContent = () => {
           return <Packages />;
         case 'activity':
           return <Activity />;
+        case 'user-management':
+          return <UserManagement />;
         default:
           return <SessionRules />;
       }

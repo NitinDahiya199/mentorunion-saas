@@ -45,7 +45,8 @@ const Sidebar = () => {
         { page: 'billing-logic', icon: 'fa-dollar-sign', label: 'Billing & Credits' },
         { page: 'platform-features', icon: 'fa-bolt', label: 'Platform Features' },
         { page: 'packages', icon: 'fa-box', label: 'Package' },
-        { page: 'activity', icon: 'fa-history', label: 'Activity' }
+        { page: 'activity', icon: 'fa-history', label: 'Activity' },
+        { page: 'user-management', icon: 'fa-users', label: 'User Management' }
       ]
     },
     'platform-admin': {
