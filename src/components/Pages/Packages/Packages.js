@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../../context/AppContext';
 import './Packages.css';
 
@@ -54,6 +54,7 @@ const Packages = () => {
     maxMentees: '',
     features: []
   });
+  const [newFeature, setNewFeature] = useState('');
 
   const handleCreatePackage = () => {
     setFormData({
@@ -65,6 +66,7 @@ const Packages = () => {
       maxMentees: '',
       features: []
     });
+    setNewFeature('');
     setEditingPackage(null);
     setShowCreateModal(true);
   };
@@ -79,6 +81,7 @@ const Packages = () => {
       maxMentees: pkg.maxMentees.toString(),
       features: [...pkg.features]
     });
+    setNewFeature('');
     setEditingPackage(pkg);
     setShowCreateModal(true);
   };
@@ -86,6 +89,11 @@ const Packages = () => {
   const handleSavePackage = () => {
     if (!formData.name || !formData.description || !formData.price) {
       showNotification('Please fill in all required fields');
+      return;
+    }
+
+    if (!formData.maxOrganizations || !formData.maxMentors || !formData.maxMentees) {
+      showNotification('Please fill in all limit fields');
       return;
     }
 
@@ -111,6 +119,7 @@ const Packages = () => {
     }
     setShowCreateModal(false);
     setEditingPackage(null);
+    setNewFeature('');
   };
 
   const handleDeletePackage = (pkg) => {
@@ -125,12 +134,19 @@ const Packages = () => {
   };
 
   const handleAddFeature = () => {
-    const feature = prompt('Enter feature name:');
-    if (feature && feature.trim()) {
+    if (newFeature && newFeature.trim()) {
       setFormData({
         ...formData,
-        features: [...formData.features, feature.trim()]
+        features: [...formData.features, newFeature.trim()]
       });
+      setNewFeature('');
+    }
+  };
+
+  const handleFeatureKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAddFeature();
     }
   };
 
@@ -140,6 +156,26 @@ const Packages = () => {
       features: formData.features.filter((_, i) => i !== index)
     });
   };
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && showCreateModal) {
+        setShowCreateModal(false);
+        setEditingPackage(null);
+        setNewFeature('');
+      }
+    };
+
+    if (showCreateModal) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showCreateModal]);
 
   return (
     <div className="packages-page">
@@ -299,16 +335,37 @@ const Packages = () => {
 
               <div className="package-form-group">
                 <label>Features</label>
-                <div className="package-features-input">
-                  {formData.features.map((feature, index) => (
-                    <span key={index} className="package-feature-tag">
-                      {feature}
-                      <button onClick={() => handleRemoveFeature(index)}>
-                        <i className="fas fa-times"></i>
-                      </button>
-                    </span>
-                  ))}
-                  <button className="package-add-feature-btn" onClick={handleAddFeature}>
+                {formData.features.length > 0 && (
+                  <div className="package-features-tags-container">
+                    {formData.features.map((feature, index) => (
+                      <span key={index} className="package-feature-tag">
+                        {feature}
+                        <button 
+                          type="button"
+                          onClick={() => handleRemoveFeature(index)}
+                          className="package-feature-remove"
+                        >
+                          <i className="fas fa-times"></i>
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <div className="package-features-input-wrapper">
+                  <input
+                    type="text"
+                    value={newFeature}
+                    onChange={(e) => setNewFeature(e.target.value)}
+                    onKeyPress={handleFeatureKeyPress}
+                    placeholder="Enter feature name and press Enter or click Add"
+                    className="package-feature-input"
+                  />
+                  <button 
+                    type="button"
+                    className="package-add-feature-btn" 
+                    onClick={handleAddFeature}
+                    disabled={!newFeature.trim()}
+                  >
                     <i className="fas fa-plus"></i> Add Feature
                   </button>
                 </div>
