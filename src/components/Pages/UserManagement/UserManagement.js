@@ -234,27 +234,7 @@ const UserManagement = () => {
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="user-management-stats">
-        <div className="user-stat-card">
-          <div className="user-stat-label">TOTAL USERS</div>
-          <div className="user-stat-value">{stats.total}</div>
-        </div>
-        <div className="user-stat-card">
-          <div className="user-stat-label">ADMIN</div>
-          <div className="user-stat-value user-stat-admin">{stats.admin}</div>
-        </div>
-        <div className="user-stat-card">
-          <div className="user-stat-label">MENTOR</div>
-          <div className="user-stat-value user-stat-mentor">{stats.mentor}</div>
-        </div>
-        <div className="user-stat-card">
-          <div className="user-stat-label">MENTEE</div>
-          <div className="user-stat-value user-stat-mentee">{stats.mentee}</div>
-        </div>
-      </div>
-
-      {/* Organization Dropdown */}
+      {/* Organization Dropdown - below subtitle */}
       <div className="user-management-org-selector">
         <div className="org-selector-label">Filter by Organization:</div>
         <div className="org-selector-dropdown" ref={orgDropdownRef}>
@@ -282,8 +262,28 @@ const UserManagement = () => {
         </div>
       </div>
 
-      {/* Table Section */}
-      <div className="user-management-table-container">
+      {/* Stats Section */}
+      <div className="user-management-stats">
+        <div className="user-stat-card">
+          <div className="user-stat-label">TOTAL USERS</div>
+          <div className="user-stat-value">{stats.total}</div>
+        </div>
+        <div className="user-stat-card">
+          <div className="user-stat-label">ADMIN</div>
+          <div className="user-stat-value user-stat-admin">{stats.admin}</div>
+        </div>
+        <div className="user-stat-card">
+          <div className="user-stat-label">MENTOR</div>
+          <div className="user-stat-value user-stat-mentor">{stats.mentor}</div>
+        </div>
+        <div className="user-stat-card">
+          <div className="user-stat-label">MENTEE</div>
+          <div className="user-stat-value user-stat-mentee">{stats.mentee}</div>
+        </div>
+      </div>
+
+      {/* Users Section - Tiles */}
+      <div className="user-management-tiles-container">
         <div className="user-management-table-header">
           <div className="table-search-container">
             <i className="fas fa-search table-search-icon"></i>
@@ -326,57 +326,52 @@ const UserManagement = () => {
           </div>
         </div>
 
-        <div className="user-management-table-wrapper">
-          <table className="user-management-table">
-            <thead>
-              <tr>
-                <th>Profile Pic</th>
-                <th>UID</th>
-                <th>Name</th>
-                <th>Org</th>
-                <th>Role</th>
-                <th>DOJ</th>
-                <th>Contact</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredUsers.length === 0 ? (
-                <tr>
-                  <td colSpan="7" className="table-empty-state">
-                    <div className="empty-state-content">
-                      <i className="fas fa-users"></i>
-                      <p>No users found matching your filters.</p>
-                    </div>
-                  </td>
-                </tr>
-              ) : (
-                filteredUsers.map(user => (
-                  <tr key={user.id}>
-                    <td>
-                      <div className="user-profile-pic">
-                        {user.profilePic ? (
-                          <img src={user.profilePic} alt={user.name} />
-                        ) : (
-                          <span>{getInitials(user.name)}</span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="user-uid">{user.uid}</td>
-                    <td className="user-name">{user.name}</td>
-                    <td className="user-org">{user.org}</td>
-                    <td>
-                      <span className={`user-role-badge user-role-${user.role.toLowerCase()}`}>
-                        {user.role}
-                      </span>
-                    </td>
-                    <td className="user-doj">{formatDate(user.doj)}</td>
-                    <td className="user-contact">{user.contact}</td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+        {filteredUsers.length === 0 ? (
+          <div className="user-tiles-empty-state">
+            <div className="empty-state-content">
+              <i className="fas fa-users"></i>
+              <p>No users found matching your filters.</p>
+            </div>
+          </div>
+        ) : (
+          <div className="user-tiles-grid">
+            {filteredUsers.map(user => (
+              <div
+                key={user.id}
+                className={`user-tile user-tile-role-${user.role.toLowerCase()}`}
+              >
+                <div className="user-tile-avatar">
+                  {user.profilePic ? (
+                    <img src={user.profilePic} alt={user.name} />
+                  ) : (
+                    <span>{getInitials(user.name)}</span>
+                  )}
+                </div>
+                <div className="user-tile-body">
+                  <h3 className="user-tile-name">{user.name}</h3>
+                  <span className="user-tile-uid">{user.uid}</span>
+                  <div className="user-tile-meta">
+                    <span className="user-tile-org" title={user.org}>
+                      <i className="fas fa-building"></i>
+                      {user.org}
+                    </span>
+                    <span className={`user-tile-role user-role-${user.role.toLowerCase()}`}>
+                      {user.role}
+                    </span>
+                  </div>
+                  <div className="user-tile-doj">
+                    <i className="fas fa-calendar-alt"></i>
+                    Joined {formatDate(user.doj)}
+                  </div>
+                  <a href={`mailto:${user.contact}`} className="user-tile-contact" title={user.contact}>
+                    <i className="fas fa-envelope"></i>
+                    {user.contact}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

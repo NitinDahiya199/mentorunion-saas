@@ -167,8 +167,8 @@
   font-weight: 600;
 }
 
-/* Table Container */
-.user-management-table-container {
+/* Tiles Container */
+.user-management-tiles-container {
   background: var(--card-bg);
   border: 1px solid var(--border-dark);
   border-radius: 12px;
@@ -337,114 +337,209 @@
   font-size: 12px;
 }
 
-/* Table */
-.user-management-table-wrapper {
-  overflow-x: auto;
+/* User Tiles Grid */
+.user-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
   width: 100%;
 }
 
-.user-management-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.user-management-table thead {
+.user-tile {
   background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.user-management-table th {
-  padding: 16px;
-  text-align: left;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-tertiary);
-  border-bottom: 2px solid var(--border-dark);
-  white-space: nowrap;
+.user-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--border-dark);
+  opacity: 0.6;
 }
 
-.user-management-table td {
-  padding: 16px;
-  border-bottom: 1px solid var(--border-dark);
-  color: var(--text-secondary);
-  font-size: 14px;
+.user-tile-role-admin::before {
+  background: linear-gradient(90deg, var(--mentorunion-blue), rgba(37, 99, 235, 0.5));
+  opacity: 1;
 }
 
-.user-management-table tbody tr:hover {
-  background: var(--surface-dark);
+.user-tile-role-mentor::before {
+  background: linear-gradient(90deg, var(--mentorunion-green), rgba(16, 185, 129, 0.5));
+  opacity: 1;
 }
 
-.user-profile-pic {
-  width: 40px;
-  height: 40px;
+.user-tile-role-mentee::before {
+  background: linear-gradient(90deg, var(--mentorunion-purple), rgba(139, 92, 246, 0.5));
+  opacity: 1;
+}
+
+.user-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border-color: var(--border-dark);
+}
+
+.user-tile-avatar {
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background: var(--mentorunion-blue);
+  margin: 20px auto 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 22px;
   flex-shrink: 0;
+  background: linear-gradient(135deg, var(--mentorunion-blue), rgba(37, 99, 235, 0.7));
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
-.user-profile-pic img {
+.user-tile-role-admin .user-tile-avatar {
+  background: linear-gradient(135deg, var(--mentorunion-blue), rgba(37, 99, 235, 0.7));
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.user-tile-role-mentor .user-tile-avatar {
+  background: linear-gradient(135deg, var(--mentorunion-green), rgba(16, 185, 129, 0.7));
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.user-tile-role-mentee .user-tile-avatar {
+  background: linear-gradient(135deg, var(--mentorunion-purple), rgba(139, 92, 246, 0.7));
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.user-tile-avatar img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.user-uid {
+.user-tile-body {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.user-tile-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.user-tile-uid {
   font-family: 'Courier New', monospace;
+  font-size: 12px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-tertiary);
+  letter-spacing: 0.5px;
 }
 
-.user-name {
-  font-weight: 600;
-  color: var(--text-primary);
+.user-tile-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
 }
 
-.user-org {
+.user-tile-org {
+  font-size: 12px;
   color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.user-role-badge {
+.user-tile-org i {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.user-tile-role {
   display: inline-block;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 11px;
-  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.user-role-admin {
-  background: rgba(37, 99, 235, 0.15);
+.user-tile-role.user-role-admin {
+  background: rgba(37, 99, 235, 0.2);
   color: var(--mentorunion-blue);
 }
 
-.user-role-mentor {
-  background: rgba(16, 185, 129, 0.15);
+.user-tile-role.user-role-mentor {
+  background: rgba(16, 185, 129, 0.2);
   color: var(--mentorunion-green);
 }
 
-.user-role-mentee {
-  background: rgba(139, 92, 246, 0.15);
+.user-tile-role.user-role-mentee {
+  background: rgba(139, 92, 246, 0.2);
   color: var(--mentorunion-purple);
 }
 
-.user-doj {
-  color: var(--text-secondary);
+.user-tile-doj {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.user-contact {
-  color: var(--text-secondary);
+.user-tile-doj i {
+  font-size: 10px;
 }
 
-.table-empty-state {
+.user-tile-contact {
+  font-size: 12px;
+  color: var(--mentorunion-blue);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.user-tile-contact:hover {
+  color: var(--mentorunion-red);
+}
+
+.user-tile-contact i {
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.user-tiles-empty-state {
   text-align: center;
   padding: 60px 20px;
 }
@@ -491,12 +586,12 @@
     justify-content: space-between;
   }
 
-  .user-management-table-wrapper {
-    overflow-x: scroll;
+  .user-tiles-grid {
+    grid-template-columns: 1fr;
   }
 
-  .user-management-table {
-    min-width: 800px;
+  .user-tile-body {
+    padding: 0 16px 16px;
   }
 
   .org-selector-menu {
