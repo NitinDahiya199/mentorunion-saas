@@ -228,37 +228,35 @@ const UserManagement = () => {
   return (
     <div className="user-management-page">
       <div className="user-management-header">
-        <div>
+        <div className="user-management-header-title">
           <h1 className="user-management-title">User Management</h1>
           <p className="user-management-subtitle">Manage and monitor all users across organizations</p>
         </div>
-      </div>
-
-      {/* Organization Dropdown - below subtitle */}
-      <div className="user-management-org-selector">
-        <div className="org-selector-label">Filter by Organization:</div>
-        <div className="org-selector-dropdown" ref={orgDropdownRef}>
-          <button
-            className="org-selector-button"
-            onClick={() => setIsOrgDropdownOpen(!isOrgDropdownOpen)}
-          >
-            <i className="fas fa-building"></i>
-            <span>{selectedOrg}</span>
-            <i className={`fas fa-chevron-${isOrgDropdownOpen ? 'up' : 'down'}`}></i>
-          </button>
-          {isOrgDropdownOpen && (
-            <div className="org-selector-menu">
-              {organizations.map(org => (
-                <button
-                  key={org}
-                  className={`org-selector-menu-item ${selectedOrg === org ? 'active' : ''}`}
-                  onClick={() => handleOrgSelect(org)}
-                >
-                  {org}
-                </button>
-              ))}
-            </div>
-          )}
+        <div className="user-management-header-filter">
+          <span className="org-selector-label">Filter by Organization:</span>
+          <div className="org-selector-dropdown" ref={orgDropdownRef}>
+            <button
+              className="org-selector-button"
+              onClick={() => setIsOrgDropdownOpen(!isOrgDropdownOpen)}
+            >
+              <i className="fas fa-building"></i>
+              <span>{selectedOrg}</span>
+              <i className={`fas fa-chevron-${isOrgDropdownOpen ? 'up' : 'down'}`}></i>
+            </button>
+            {isOrgDropdownOpen && (
+              <div className="org-selector-menu">
+                {organizations.map(org => (
+                  <button
+                    key={org}
+                    className={`org-selector-menu-item ${selectedOrg === org ? 'active' : ''}`}
+                    onClick={() => handleOrgSelect(org)}
+                  >
+                    {org}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
