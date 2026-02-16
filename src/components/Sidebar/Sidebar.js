@@ -41,6 +41,7 @@ const Sidebar = () => {
     'super-admin': {
       title: 'System Configuration',
       items: [
+        { page: 'dashboard', icon: 'fa-home', label: 'Dashboard' },
         { page: 'session-rules', icon: 'fa-cog', label: 'Session Rules' },
         { page: 'billing-logic', icon: 'fa-dollar-sign', label: 'Billing & Credits' },
         { page: 'platform-features', icon: 'fa-bolt', label: 'Platform Features' },

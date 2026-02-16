@@ -254,7 +254,7 @@ export const AppProvider = ({ children }) => {
     } else if (currentRole === 'mentor') {
       setCurrentPage('mentor-dashboard');
     } else if (currentRole === 'super-admin') {
-      setCurrentPage('session-rules');
+      setCurrentPage('dashboard');
     } else if (currentRole === 'org-admin') {
       setCurrentPage('org-dashboard');
     } else if (currentRole === 'platform-admin') {

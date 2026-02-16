@@ -60,7 +60,7 @@ const MainContent = () => {
         case 'user-management':
           return <UserManagement />;
         default:
-          return <SessionRules />;
+          return <SuperAdminDashboard />;
       }
     }
 
