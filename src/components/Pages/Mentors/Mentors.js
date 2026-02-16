@@ -8,6 +8,7 @@ const Mentors = () => {
   const mentors = [
     {
       id: 1,
+      uid: 'UID002',
       name: 'Dr. Arun Patel',
       email: 'arun@example.com',
       programs: ['DATA SCIENCE BOOTCAMP'],
@@ -39,6 +40,7 @@ const Mentors = () => {
         <table className="mentors-table">
           <thead>
             <tr>
+              <th>UID</th>
               <th>NAME</th>
               <th>EMAIL</th>
               <th>PROGRAMS</th>
@@ -50,6 +52,9 @@ const Mentors = () => {
           <tbody>
             {mentors.map((mentor) => (
               <tr key={mentor.id}>
+                <td className="mentor-uid-cell">
+                  <code>{mentor.uid}</code>
+                </td>
                 <td className="mentor-name-cell">
                   <strong>{mentor.name}</strong>
                 </td>

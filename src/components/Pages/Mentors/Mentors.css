@@ -81,6 +81,20 @@
   background: var(--surface-dark);
 }
 
+.mentor-uid-cell {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mentor-uid-cell code {
+  background: var(--surface-dark);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
 .mentor-name-cell {
   font-weight: 600;
 }

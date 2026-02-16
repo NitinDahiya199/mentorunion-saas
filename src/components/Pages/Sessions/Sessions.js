@@ -10,7 +10,9 @@ const Sessions = () => {
       id: 1,
       agenda: 'Python Fundamentals',
       mentor: 'Dr. Arun Patel',
+      mentorUid: 'UID002',
       mentee: 'Riya Kapoor',
+      menteeUid: 'UID008',
       date: '2025-02-10',
       time: '10:00 AM',
       status: 'COMPLETED',
@@ -20,7 +22,9 @@ const Sessions = () => {
       id: 2,
       agenda: 'ML Basics',
       mentor: 'Dr. Arun Patel',
+      mentorUid: 'UID002',
       mentee: 'Riya Kapoor',
+      menteeUid: 'UID008',
       date: '2025-02-17',
       time: '10:00 AM',
       status: 'SCHEDULED',
@@ -68,8 +72,8 @@ const Sessions = () => {
               <tr key={session.id}>
                 <td className="session-id">#{session.id}</td>
                 <td className="session-agenda">{session.agenda}</td>
-                <td>{session.mentor}</td>
-                <td>{session.mentee}</td>
+                <td><span className="session-party">{session.mentor}</span> <code className="session-uid">{session.mentorUid}</code></td>
+                <td><span className="session-party">{session.mentee}</span> <code className="session-uid">{session.menteeUid}</code></td>
                 <td>{formatDateTime(session.date, session.time)}</td>
                 <td>
                   <span className={`session-status-badge session-status-${session.statusColor}`}>

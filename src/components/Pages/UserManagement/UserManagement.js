@@ -348,8 +348,8 @@ const UserManagement = () => {
                   )}
                 </div>
                 <div className="user-tile-body">
+                  <span className="user-tile-uid-badge" title="Unique ID">ID: {user.uid}</span>
                   <h3 className="user-tile-name">{user.name}</h3>
-                  <span className="user-tile-uid">{user.uid}</span>
                   <div className="user-tile-meta">
                     <span className="user-tile-org" title={user.org}>
                       <i className="fas fa-building"></i>

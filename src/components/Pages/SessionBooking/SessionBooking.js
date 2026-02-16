@@ -20,11 +20,11 @@ const SessionBooking = () => {
   ];
 
   const mentors = [
-    { name: 'Dr. Arun Patel', specialization: 'Data Science, ML', programs: ['Data Science Bootcamp'], rating: '★★★★★ (4.8)', maxPrograms: 2 }
+    { uid: 'UID002', name: 'Dr. Arun Patel', specialization: 'Data Science, ML', programs: ['Data Science Bootcamp'], rating: '★★★★★ (4.8)', maxPrograms: 2 }
   ];
 
   const mentees = [
-    { name: 'Riya Kapoor', program: 'Data Science Bootcamp', status: 'Active', sessions: 6, credit: 8 }
+    { uid: 'UID008', name: 'Riya Kapoor', program: 'Data Science Bootcamp', status: 'Active', sessions: 6, credit: 8 }
   ];
 
   const steps = [
@@ -110,6 +110,7 @@ const SessionBooking = () => {
                   className={`session-mentor-card ${selectedMentor === mentor.name ? 'selected' : ''}`}
                   onClick={() => handleMentorSelect(mentor)}
                 >
+                  <span className="session-card-uid">{mentor.uid}</span>
                   <h3 className="session-mentor-name">{mentor.name}</h3>
                   <p className="session-mentor-details">{mentor.specialization}</p>
                   <p className="session-mentor-rating">{mentor.rating}</p>
@@ -132,6 +133,7 @@ const SessionBooking = () => {
                   className={`session-mentee-card ${selectedMentee === mentee.name ? 'selected' : ''}`}
                   onClick={() => handleMenteeSelect(mentee)}
                 >
+                  <span className="session-card-uid">{mentee.uid}</span>
                   <h3 className="session-mentee-name">{mentee.name}</h3>
                   <p className="session-mentee-details">Program: {mentee.program}</p>
                   <p className="session-mentee-credits">Credits: {mentee.credit}</p>
