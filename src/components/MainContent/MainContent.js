@@ -21,6 +21,13 @@ import Support from '../Pages/Support/Support';
 import AddAdmin from '../Pages/AddAdmin/AddAdmin';
 import UserConfig from '../Pages/UserConfig/UserConfig';
 import OrgTicketRaised from '../Pages/OrgTicketRaised/OrgTicketRaised';
+import OrgCallRecords from '../Pages/OrgCallRecords/OrgCallRecords';
+import OrgDomainCategory from '../Pages/OrgDomainCategory/OrgDomainCategory';
+import OrgBlockedLogs from '../Pages/OrgBlockedLogs/OrgBlockedLogs';
+import OrgManageCredits from '../Pages/OrgManageCredits/OrgManageCredits';
+import OrgProBono from '../Pages/OrgProBono/OrgProBono';
+import OrgConfiguration from '../Pages/OrgConfiguration/OrgConfiguration';
+import OrgSettings from '../Pages/OrgSettings/OrgSettings';
 import Organisations from '../Pages/Organisations/Organisations';
 import AdminManagement from '../Pages/AdminManagement/AdminManagement';
 import TicketRaised from '../Pages/TicketRaised/TicketRaised';
@@ -95,12 +102,29 @@ const MainContent = () => {
       switch (currentPage) {
         case 'org-dashboard':
           return <OrgAdminDashboard />;
+        case 'org-call-records':
+          return <OrgCallRecords />;
+        case 'org-domain-category':
+          return <OrgDomainCategory />;
         case 'programs':
           return <Programs />;
         case 'mentors':
           return <Mentors />;
         case 'mentees':
           return <Mentees />;
+        case 'org-blocked-logs':
+          return <OrgBlockedLogs />;
+        case 'org-manage-credits':
+          return <OrgManageCredits />;
+        case 'billing-payouts':
+          return <BillingPayouts />;
+        case 'org-pro-bono':
+          return <OrgProBono />;
+        case 'org-config-feedback':
+        case 'org-config-agenda':
+        case 'org-config-policy':
+        case 'org-config-buffer':
+          return <OrgConfiguration />;
         case 'sessions':
           return <Sessions />;
         case 'session-booking':
@@ -109,8 +133,11 @@ const MainContent = () => {
           return <AddAdmin />;
         case 'user-config':
           return <UserConfig />;
-        case 'billing-payouts':
-          return <BillingPayouts />;
+        case 'org-settings-profile':
+        case 'org-settings-org':
+        case 'org-settings-password':
+        case 'org-settings-communication':
+          return <OrgSettings />;
         case 'org-ticket-raised':
           return <OrgTicketRaised />;
         case 'support':

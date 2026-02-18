@@ -1,0 +1,135 @@
+.org-blocked-logs-page {
+  padding: 40px;
+  background: var(--primary-black);
+  min-height: 100vh;
+}
+
+.org-blocked-header {
+  margin-bottom: 24px;
+}
+
+.org-blocked-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.org-blocked-subtitle {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.org-blocked-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.org-blocked-tab {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-blocked-tab:hover {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.org-blocked-tab.active {
+  background: var(--mentorunion-red);
+  border-color: var(--mentorunion-red);
+  color: white;
+}
+
+.org-blocked-table-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.org-blocked-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.org-blocked-table thead {
+  background: var(--surface-dark);
+}
+
+.org-blocked-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.org-blocked-table td {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--text-primary);
+}
+
+.org-blocked-table tbody tr:hover {
+  background: var(--surface-dark);
+}
+
+.org-blocked-action-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-blocked-action-btn.unblock:hover {
+  background: var(--mentorunion-green);
+  color: white;
+  border-color: var(--mentorunion-green);
+}
+
+.org-blocked-action-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.org-blocked-action-badge.blocked {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--mentorunion-red);
+}
+
+.org-blocked-action-badge.unblocked {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+}
+
+@media (max-width: 768px) {
+  .org-blocked-logs-page {
+    padding: 20px;
+  }
+  .org-blocked-table-container {
+    overflow-x: auto;
+  }
+}

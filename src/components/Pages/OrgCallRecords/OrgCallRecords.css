@@ -1,0 +1,153 @@
+.org-call-records-page {
+  padding: 40px;
+  background: var(--primary-black);
+  min-height: 100vh;
+}
+
+.org-call-records-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.org-call-records-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.org-call-records-subtitle {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.org-call-records-download-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background: var(--mentorunion-red);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-call-records-download-btn:hover {
+  background: rgba(239, 68, 68, 0.9);
+}
+
+.org-call-records-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.org-call-tab {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-call-tab:hover {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.org-call-tab.active {
+  background: var(--mentorunion-red);
+  border-color: var(--mentorunion-red);
+  color: white;
+}
+
+.org-call-records-table-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.org-call-records-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.org-call-records-table thead {
+  background: var(--surface-dark);
+}
+
+.org-call-records-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.org-call-records-table td {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--text-primary);
+}
+
+.org-call-records-table tbody tr:hover {
+  background: var(--surface-dark);
+}
+
+.org-call-id {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.org-call-quality-badge,
+.org-call-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.org-call-quality-good {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+}
+
+.org-call-status-green {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mentorunion-green);
+}
+
+.org-call-status-blue {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--mentorunion-blue);
+}
+
+@media (max-width: 768px) {
+  .org-call-records-page {
+    padding: 20px;
+  }
+  .org-call-records-table-container {
+    overflow-x: auto;
+  }
+}

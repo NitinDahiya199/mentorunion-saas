@@ -1,0 +1,123 @@
+.org-settings-page {
+  padding: 40px;
+  background: var(--primary-black);
+  min-height: 100vh;
+}
+
+.org-settings-header {
+  margin-bottom: 32px;
+}
+
+.org-settings-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.org-settings-subtitle {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.org-settings-section {
+  margin-bottom: 24px;
+}
+
+.org-settings-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.org-settings-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+.org-settings-placeholder {
+  color: var(--text-tertiary);
+  margin: 0 0 20px 0;
+}
+
+.org-settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;
+}
+
+.org-settings-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.org-settings-form input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.org-settings-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--mentorunion-red);
+  background: var(--mentorunion-red);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.org-settings-save-btn:hover {
+  background: rgba(239, 68, 68, 0.9);
+}
+
+.org-settings-comms-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.org-settings-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-settings-action-btn:hover {
+  background: var(--card-bg);
+  border-color: var(--mentorunion-red);
+  color: var(--mentorunion-red);
+}
+
+@media (max-width: 768px) {
+  .org-settings-page {
+    padding: 20px;
+  }
+}

@@ -10,6 +10,8 @@ const Sidebar = () => {
   const [sessionsExpanded, setSessionsExpanded] = useState(false);
   const [userManagementExpanded, setUserManagementExpanded] = useState(false);
   const [adminManagementExpanded, setAdminManagementExpanded] = useState(false);
+  const [configurationExpanded, setConfigurationExpanded] = useState(false);
+  const [settingsExpanded, setSettingsExpanded] = useState(false);
   const dropdownRef = useRef(null);
   const platformDropdownRef = useRef(null);
   
@@ -18,6 +20,8 @@ const Sidebar = () => {
     setSessionsExpanded(false);
     setUserManagementExpanded(false);
     setAdminManagementExpanded(false);
+    setConfigurationExpanded(false);
+    setSettingsExpanded(false);
   };
   
   // Close other submenus except the specified one
@@ -25,6 +29,8 @@ const Sidebar = () => {
     if (except !== 'sessions') setSessionsExpanded(false);
     if (except !== 'user-management') setUserManagementExpanded(false);
     if (except !== 'admin-management') setAdminManagementExpanded(false);
+    if (except !== 'configuration') setConfigurationExpanded(false);
+    if (except !== 'settings') setSettingsExpanded(false);
   };
   
   // Handle navigation and close submenus
@@ -65,13 +71,20 @@ const Sidebar = () => {
       title: 'Organisation Management',
       items: [
         { page: 'org-dashboard', icon: 'fa-home', label: 'Dashboard' },
-        { page: 'programs', icon: 'fa-th', label: 'Programs' },
+        { page: 'org-call-records', icon: 'fa-phone-alt', label: 'Call Records' },
+        { page: 'org-domain-category', icon: 'fa-sitemap', label: 'Domain & Category' },
         { page: 'mentors', icon: 'fa-users', label: 'Mentors' },
         { page: 'mentees', icon: 'fa-user-graduate', label: 'Mentees' },
+        { page: 'org-blocked-logs', icon: 'fa-ban', label: 'Blocked Logs' },
+        { page: 'programs', icon: 'fa-th', label: 'All Programmes' },
+        { page: 'org-manage-credits', icon: 'fa-coins', label: 'Manage Credits' },
+        { page: 'billing-payouts', icon: 'fa-dollar-sign', label: 'Billings' },
+        { page: 'org-pro-bono', icon: 'fa-hand-holding-heart', label: 'Pro-Bono Mentors' },
+        { page: 'org-configuration', icon: 'fa-cog', label: 'Configuration' },
         { page: 'sessions', icon: 'fa-calendar', label: 'Sessions' },
         { page: 'user-management', icon: 'fa-user-cog', label: 'User Management' },
-        { page: 'billing-payouts', icon: 'fa-dollar-sign', label: '$ Billing & Payouts' },
-        { page: 'org-ticket-raised', icon: 'fa-ticket-alt', label: 'Ticket Raised' },
+        { page: 'org-settings', icon: 'fa-user-circle', label: 'Settings' },
+        { page: 'org-ticket-raised', icon: 'fa-ticket-alt', label: 'Support Tickets' },
         { page: 'support', icon: 'fa-headset', label: 'Support' }
       ]
     },
@@ -340,6 +353,80 @@ const Sidebar = () => {
                     >
                       {getIcon('fa-cog', 16)}
                       <span>Config</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          // Handle Configuration as expandable submenu for Org Admin
+          if (item.page === 'org-configuration' && currentRole === 'org-admin') {
+            return (
+              <div key={item.page} className="nav-item-expandable">
+                <button
+                  className={`nav-item ${configurationExpanded ? 'expanded' : ''} ${['org-config-feedback', 'org-config-agenda', 'org-config-policy', 'org-config-buffer'].includes(currentPage) ? 'active' : ''}`}
+                  onClick={() => {
+                    if (configurationExpanded) setConfigurationExpanded(false);
+                    else { closeOtherSubmenus('configuration'); setConfigurationExpanded(true); }
+                  }}
+                >
+                  {getIcon(item.icon, 16)}
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${configurationExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
+                </button>
+                {configurationExpanded && (
+                  <div className="nav-submenu">
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-feedback' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-feedback'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-comment-dots', 16)}<span>Feedback Management</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-agenda' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-agenda'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-list-ol', 16)}<span>Agenda Questions</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-policy' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-policy'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-sliders-h', 16)}<span>Policy Tuning</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-buffer' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-buffer'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-clock', 16)}<span>Buffer Logic</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          // Handle Settings as expandable submenu for Org Admin
+          if (item.page === 'org-settings' && currentRole === 'org-admin') {
+            return (
+              <div key={item.page} className="nav-item-expandable">
+                <button
+                  className={`nav-item ${settingsExpanded ? 'expanded' : ''} ${['org-settings-profile', 'org-settings-org', 'org-settings-password', 'org-settings-communication'].includes(currentPage) ? 'active' : ''}`}
+                  onClick={() => {
+                    if (settingsExpanded) setSettingsExpanded(false);
+                    else { closeOtherSubmenus('settings'); setSettingsExpanded(true); }
+                  }}
+                >
+                  {getIcon(item.icon, 16)}
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${settingsExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
+                </button>
+                {settingsExpanded && (
+                  <div className="nav-submenu">
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-profile' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-profile'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-user', 16)}<span>My Profile</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-org' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-org'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-building', 16)}<span>Org Details</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-password' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-password'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-key', 16)}<span>Change Password</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-communication' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-communication'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-envelope', 16)}<span>Communication</span>
                     </button>
                   </div>
                 )}

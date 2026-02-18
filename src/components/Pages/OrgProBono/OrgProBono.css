@@ -1,0 +1,159 @@
+.org-pro-bono-page {
+  padding: 40px;
+  background: var(--primary-black);
+  min-height: 100vh;
+}
+
+.org-pro-bono-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.org-pro-bono-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.org-pro-bono-subtitle {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.org-pro-bono-upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background: var(--mentorunion-red);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-pro-bono-upload-btn:hover {
+  background: rgba(239, 68, 68, 0.9);
+}
+
+.org-pro-bono-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.org-pro-bono-tab {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.org-pro-bono-tab:hover {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.org-pro-bono-tab.active {
+  background: var(--mentorunion-red);
+  border-color: var(--mentorunion-red);
+  color: white;
+}
+
+.org-pro-bono-table-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.org-pro-bono-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.org-pro-bono-table thead {
+  background: var(--surface-dark);
+}
+
+.org-pro-bono-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-dark);
+}
+
+.org-pro-bono-table td {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-dark);
+  color: var(--text-primary);
+}
+
+.org-pro-bono-type-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--mentorunion-red);
+}
+
+.org-pro-bono-action-btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
+  color: var(--text-secondary);
+  cursor: pointer;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+}
+
+.org-pro-bono-action-btn:hover {
+  background: var(--mentorunion-blue);
+  color: white;
+}
+
+.org-pro-bono-empty {
+  text-align: center;
+  color: var(--text-tertiary);
+  padding: 40px !important;
+}
+
+.org-pro-bono-placeholder {
+  background: var(--card-bg);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .org-pro-bono-page {
+    padding: 20px;
+  }
+  .org-pro-bono-table-container {
+    overflow-x: auto;
+  }
+}
