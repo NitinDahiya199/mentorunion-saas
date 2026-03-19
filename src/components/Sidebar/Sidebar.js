@@ -1,64 +1,120 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ROLE_ARCHITECTURE } from '../../data/informationArchitecture';
 import { getIcon } from '../Icons/SVGs';
 import './Sidebar.css';
 
 const Sidebar = () => {
-  const {
-    currentRole,
-    currentPage,
-    sidebarCollapsed,
-    navigateToPage,
-    toggleSidebar,
-    mentorOrganizations,
-    selectedOrganization,
-    setSelectedOrganization,
-    platformOrganizations,
-    selectedPlatformOrganization,
-    setSelectedPlatformOrganization
-  } = useApp();
-
+  const { currentRole, currentPage, sidebarCollapsed, navigateToPage, toggleSidebar, mentorOrganizations, selectedOrganization, setSelectedOrganization, platformOrganizations, selectedPlatformOrganization, setSelectedPlatformOrganization } = useApp();
   const [orgDropdownOpen, setOrgDropdownOpen] = useState(false);
   const [platformOrgDropdownOpen, setPlatformOrgDropdownOpen] = useState(false);
-  const [expandedSections, setExpandedSections] = useState({});
+  const [sessionsExpanded, setSessionsExpanded] = useState(false);
+  const [userManagementExpanded, setUserManagementExpanded] = useState(false);
+  const [adminManagementExpanded, setAdminManagementExpanded] = useState(false);
+  const [configurationExpanded, setConfigurationExpanded] = useState(false);
+  const [settingsExpanded, setSettingsExpanded] = useState(false);
   const dropdownRef = useRef(null);
   const platformDropdownRef = useRef(null);
-
-  const roleConfig = ROLE_ARCHITECTURE[currentRole] || ROLE_ARCHITECTURE['super-admin'];
-  const roleClassName = `${currentRole}-sidebar`;
-
-  const closeSidebarOnMobile = () => {
+  
+  // Close all submenus
+  const closeAllSubmenus = () => {
+    setSessionsExpanded(false);
+    setUserManagementExpanded(false);
+    setAdminManagementExpanded(false);
+    setConfigurationExpanded(false);
+    setSettingsExpanded(false);
+  };
+  
+  // Close other submenus except the specified one
+  const closeOtherSubmenus = (except) => {
+    if (except !== 'sessions') setSessionsExpanded(false);
+    if (except !== 'user-management') setUserManagementExpanded(false);
+    if (except !== 'admin-management') setAdminManagementExpanded(false);
+    if (except !== 'configuration') setConfigurationExpanded(false);
+    if (except !== 'settings') setSettingsExpanded(false);
+  };
+  
+  // Handle navigation and close submenus
+  const handleNavigation = (page) => {
+    navigateToPage(page);
+    closeAllSubmenus();
+    // Close sidebar on mobile after navigation
     if (window.innerWidth <= 1200 && !sidebarCollapsed) {
       toggleSidebar();
     }
   };
 
-  const handleNavigation = (pageId) => {
-    navigateToPage(pageId);
-    closeSidebarOnMobile();
+  const navigationConfig = {
+    'super-admin': {
+      title: 'System Configuration',
+      items: [
+        { page: 'dashboard', icon: 'fa-home', label: 'Dashboard' },
+        { page: 'session-rules', icon: 'fa-cog', label: 'Session Rules' },
+        { page: 'billing-logic', icon: 'fa-dollar-sign', label: 'Billing & Credits' },
+        { page: 'platform-features', icon: 'fa-bolt', label: 'Platform Features' },
+        { page: 'packages', icon: 'fa-box', label: 'Package' },
+        { page: 'activity', icon: 'fa-history', label: 'Activity' },
+        { page: 'user-management', icon: 'fa-users', label: 'User Management' }
+      ]
+    },
+    'platform-admin': {
+      title: 'Platform Management',
+      items: [
+        { page: 'platform-dashboard', icon: 'fa-home', label: 'Dashboard' },
+        { page: 'admin-management', icon: 'fa-user-shield', label: 'Org Management' },
+        { page: 'platform-packages', icon: 'fa-box', label: 'Package' },
+        { page: 'ticket-raised', icon: 'fa-ticket-alt', label: 'Ticket Raised' },
+        { page: 'call-records', icon: 'fa-phone-alt', label: 'Call Records' },
+        { page: 'platform-revenue', icon: 'fa-dollar-sign', label: 'Revenue' }
+      ]
+    },
+    'org-admin': {
+      title: 'Organisation Management',
+      items: [
+        { page: 'org-dashboard', icon: 'fa-home', label: 'Dashboard' },
+        { page: 'org-call-records', icon: 'fa-phone-alt', label: 'Call Records' },
+        { page: 'org-domain-category', icon: 'fa-sitemap', label: 'Domain & Category' },
+        { page: 'mentors', icon: 'fa-users', label: 'Mentors' },
+        { page: 'mentees', icon: 'fa-user-graduate', label: 'Mentees' },
+        { page: 'org-blocked-logs', icon: 'fa-ban', label: 'Blocked Logs' },
+        { page: 'programs', icon: 'fa-th', label: 'All Programmes' },
+        { page: 'org-manage-credits', icon: 'fa-coins', label: 'Manage Credits' },
+        { page: 'billing-payouts', icon: 'fa-dollar-sign', label: 'Billings' },
+        { page: 'org-pro-bono', icon: 'fa-hand-holding-heart', label: 'Pro-Bono Mentors' },
+        { page: 'org-configuration', icon: 'fa-cog', label: 'Configuration' },
+        { page: 'sessions', icon: 'fa-calendar', label: 'Sessions' },
+        { page: 'user-management', icon: 'fa-user-cog', label: 'User Management' },
+        { page: 'org-settings', icon: 'fa-user-circle', label: 'Settings' },
+        { page: 'org-ticket-raised', icon: 'fa-ticket-alt', label: 'Support Tickets' },
+        { page: 'support', icon: 'fa-headset', label: 'Support' }
+      ]
+    },
+    'mentor': {
+      title: 'Mentor Dashboard',
+      items: [
+        { page: 'mentor-dashboard', icon: 'fa-calendar', label: 'My Sessions' },
+        { page: 'mentor-availability', icon: 'fa-clock', label: 'Availability' },
+        { page: 'mentor-join-call', icon: 'fa-video', label: 'Join Call' },
+        { page: 'mentor-submit-feedback', icon: 'fa-comment-alt', label: 'Feedback' }
+      ]
+    },
+    'mentee': {
+      title: 'Mentee Dashboard',
+      items: [
+        { page: 'mentee-dashboard', icon: 'fa-calendar', label: 'My Sessions' },
+        { page: 'mentee-join-call', icon: 'fa-video', label: 'Join Call' },
+        { page: 'mentee-submit-feedback', icon: 'fa-comment-alt', label: 'Feedback' }
+      ]
+    }
   };
 
-  useEffect(() => {
-    const nextExpanded = {};
+  const navConfig = navigationConfig[currentRole] || navigationConfig['super-admin'];
 
-    roleConfig.modules.forEach((module) => {
-      if (module.children?.some((child) => child.id === currentPage)) {
-        nextExpanded[module.id] = true;
-      }
-    });
-
-    if (Object.keys(nextExpanded).length > 0) {
-      setExpandedSections((prev) => ({ ...prev, ...nextExpanded }));
-    }
-  }, [currentPage, roleConfig.modules]);
-
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setOrgDropdownOpen(false);
       }
-
       if (platformDropdownRef.current && !platformDropdownRef.current.contains(event.target)) {
         setPlatformOrgDropdownOpen(false);
       }
@@ -76,180 +132,375 @@ const Sidebar = () => {
   const handleOrgSelect = (org) => {
     setSelectedOrganization(org);
     setOrgDropdownOpen(false);
-    navigateToPage('mentor-dashboard');
-    closeSidebarOnMobile();
+    // Reset to dashboard when organization changes
+    if (currentRole === 'mentor') {
+      navigateToPage('mentor-dashboard');
+    }
+    // Close sidebar on mobile after selecting organization
+    if (window.innerWidth <= 1200 && !sidebarCollapsed) {
+      toggleSidebar();
+    }
   };
 
   const handlePlatformOrgSelect = (org) => {
     setSelectedPlatformOrganization(org);
     setPlatformOrgDropdownOpen(false);
+    // Navigate to platform dashboard when organization changes
     navigateToPage('platform-dashboard');
-    closeSidebarOnMobile();
+    // Close sidebar on mobile after selecting organization
+    if (window.innerWidth <= 1200 && !sidebarCollapsed) {
+      toggleSidebar();
+    }
   };
 
-  const toggleSection = (moduleId) => {
-    setExpandedSections((prev) => ({
-      ...prev,
-      [moduleId]: !prev[moduleId]
-    }));
-  };
-
-  const pillContent = {
-    'mentee': { className: 'mentee-role-pill', icon: 'fa-user', label: 'MENTEE' },
-    'mentor': { className: 'mentor-role-pill', icon: 'fa-user', label: 'MENTOR' },
-    'sub-admin': { className: 'sub-admin-role-pill', icon: 'fa-user-shield', label: 'SUB ADMIN' },
-    'org-admin': { className: 'org-admin-role-pill', icon: 'fa-building', label: 'ORGANISATION ADMIN' },
-    'platform-admin': { className: 'platform-admin-role-pill', icon: 'fa-cog', label: 'PLATFORM ADMIN' },
-    'super-admin': { className: 'super-admin-role-pill', icon: 'fa-crown', label: 'SUPER ADMIN' }
-  }[currentRole];
-
-  const orgSummary = currentRole === 'org-admin'
-    ? {
-        name: 'Acadify Learning',
-        mentors: 14,
-        mentees: 126,
-        programs: 5,
-        sessions: 248
-      }
-    : currentRole === 'sub-admin'
-      ? {
-          name: 'Assigned Portfolio',
-          mentors: 8,
-          mentees: 64,
-          programs: 3,
-          sessions: 91
-        }
-      : null;
+  const orgSummary = currentRole === 'org-admin' ? {
+    name: 'Acadify Learning',
+    mentors: 1,
+    mentees: 1,
+    programs: 1,
+    sessions: 2
+  } : null;
 
   return (
-    <nav className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''} ${roleClassName}`}>
-      {pillContent && (
-        <div className={pillContent.className}>
-          {getIcon(pillContent.icon, 14)} {pillContent.label}
+    <nav className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''} ${currentRole === 'mentee' ? 'mentee-sidebar' : ''} ${currentRole === 'mentor' ? 'mentor-sidebar' : ''} ${currentRole === 'org-admin' ? 'org-admin-sidebar' : ''} ${currentRole === 'platform-admin' ? 'platform-admin-sidebar' : ''} ${currentRole === 'super-admin' ? 'super-admin-sidebar' : ''}`}>
+      {currentRole === 'mentee' && (
+        <div className="mentee-role-pill">
+          {getIcon('fa-user', 14)} MENTEE
         </div>
       )}
-
-      {currentRole === 'mentor' && mentorOrganizations?.length > 0 && (
-        <div className="sidebar-org-selector" ref={dropdownRef}>
-          <button
-            className="sidebar-org-selector-btn"
-            onClick={() => setOrgDropdownOpen(!orgDropdownOpen)}
-          >
-            {getIcon(selectedOrganization?.icon || 'fa-building', 16)}
-            <span className="sidebar-org-selector-text">{selectedOrganization?.name || 'Select Organization'}</span>
-            <span className={`sidebar-org-dropdown-arrow ${orgDropdownOpen ? 'open' : ''}`}>
-              {getIcon('fa-chevron-down', 12)}
-            </span>
-          </button>
-          {orgDropdownOpen && (
-            <div className="sidebar-org-dropdown-menu">
-              {mentorOrganizations.map((org) => (
-                <button
-                  key={org.id}
-                  className={`sidebar-org-dropdown-item ${selectedOrganization?.id === org.id ? 'active' : ''}`}
-                  onClick={() => handleOrgSelect(org)}
-                >
-                  {getIcon(org.icon, 16)}
-                  <span>{org.name}</span>
-                  {selectedOrganization?.id === org.id && getIcon('fa-check', 12)}
-                </button>
-              ))}
+      {currentRole === 'mentor' && (
+        <>
+          <div className="mentor-role-pill">
+            {getIcon('fa-user', 14)} MENTOR
+          </div>
+          {mentorOrganizations && mentorOrganizations.length > 0 && (
+            <div className="sidebar-org-selector" ref={dropdownRef}>
+              <button 
+                className="sidebar-org-selector-btn"
+                onClick={() => setOrgDropdownOpen(!orgDropdownOpen)}
+              >
+                {getIcon(selectedOrganization?.icon || 'fa-building', 16)}
+                <span className="sidebar-org-selector-text">{selectedOrganization?.name || 'Select Organization'}</span>
+                <span className={`sidebar-org-dropdown-arrow ${orgDropdownOpen ? 'open' : ''}`}>
+                  {getIcon('fa-chevron-down', 12)}
+                </span>
+              </button>
+              {orgDropdownOpen && (
+                <div className="sidebar-org-dropdown-menu">
+                  {mentorOrganizations.map((org) => (
+                    <button
+                      key={org.id}
+                      className={`sidebar-org-dropdown-item ${selectedOrganization?.id === org.id ? 'active' : ''}`}
+                      onClick={() => handleOrgSelect(org)}
+                    >
+                      {getIcon(org.icon, 16)}
+                      <span>{org.name}</span>
+                      {selectedOrganization?.id === org.id && (
+                        getIcon('fa-check', 12)
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
+        </>
+      )}
+      {currentRole === 'org-admin' && (
+        <div className="org-admin-role-pill">
+          {getIcon('fa-building', 14)} ORGANISATION ADMIN
         </div>
       )}
-
-      {currentRole === 'platform-admin' && platformOrganizations?.length > 0 && (
-        <div className="sidebar-org-selector" ref={platformDropdownRef}>
-          <button
-            className="sidebar-org-selector-btn"
-            onClick={() => setPlatformOrgDropdownOpen(!platformOrgDropdownOpen)}
-          >
-            {getIcon(selectedPlatformOrganization?.icon || 'fa-building', 16)}
-            <span className="sidebar-org-selector-text">{selectedPlatformOrganization?.name || 'Select Organization'}</span>
-            <span className={`sidebar-org-dropdown-arrow ${platformOrgDropdownOpen ? 'open' : ''}`}>
-              {getIcon('fa-chevron-down', 12)}
-            </span>
-          </button>
-          {platformOrgDropdownOpen && (
-            <div className="sidebar-org-dropdown-menu">
-              {platformOrganizations.map((org) => (
-                <button
-                  key={org.id}
-                  className={`sidebar-org-dropdown-item ${selectedPlatformOrganization?.id === org.id ? 'active' : ''}`}
-                  onClick={() => handlePlatformOrgSelect(org)}
-                >
-                  {getIcon(org.icon, 16)}
-                  <span>{org.name}</span>
-                  {selectedPlatformOrganization?.id === org.id && getIcon('fa-check', 12)}
-                </button>
-              ))}
+      {currentRole === 'platform-admin' && (
+        <>
+          <div className="platform-admin-role-pill">
+            {getIcon('fa-cog', 14)} PLATFORM ADMIN
+          </div>
+          {platformOrganizations && platformOrganizations.length > 0 && (
+            <div className="sidebar-org-selector" ref={platformDropdownRef}>
+              <button 
+                className="sidebar-org-selector-btn"
+                onClick={() => setPlatformOrgDropdownOpen(!platformOrgDropdownOpen)}
+              >
+                {getIcon(selectedPlatformOrganization?.icon || 'fa-building', 16)}
+                <span className="sidebar-org-selector-text">{selectedPlatformOrganization?.name || 'Select Organization'}</span>
+                <span className={`sidebar-org-dropdown-arrow ${platformOrgDropdownOpen ? 'open' : ''}`}>
+                  {getIcon('fa-chevron-down', 12)}
+                </span>
+              </button>
+              {platformOrgDropdownOpen && (
+                <div className="sidebar-org-dropdown-menu">
+                  {platformOrganizations.map((org) => (
+                    <button
+                      key={org.id}
+                      className={`sidebar-org-dropdown-item ${selectedPlatformOrganization?.id === org.id ? 'active' : ''}`}
+                      onClick={() => handlePlatformOrgSelect(org)}
+                    >
+                      {getIcon(org.icon, 16)}
+                      <span>{org.name}</span>
+                      {selectedPlatformOrganization?.id === org.id && (
+                        getIcon('fa-check', 12)
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
+        </>
+      )}
+      {currentRole === 'super-admin' && (
+        <div className="super-admin-role-pill">
+          {getIcon('fa-crown', 14)} SUPER ADMIN
         </div>
       )}
-
       <div className="nav-section">
-        <div className="nav-title">{roleConfig.label} Architecture</div>
-        {roleConfig.modules.map((module) => {
-          const hasChildren = Boolean(module.children?.length);
-          const childActive = module.children?.some((child) => child.id === currentPage);
-          const isExpanded = expandedSections[module.id];
-          const isActive = currentPage === module.id || childActive;
-
-          if (hasChildren) {
+        {currentRole !== 'org-admin' && currentRole !== 'platform-admin' && currentRole !== 'super-admin' && <div className="nav-title">{navConfig.title}</div>}
+        {navConfig.items.map((item) => {
+          // Handle Sessions as expandable submenu for Org Admin
+          if (item.page === 'sessions' && currentRole === 'org-admin') {
             return (
-              <div key={module.id} className="nav-item-expandable">
+              <div key={item.page} className="nav-item-expandable">
                 <button
-                  className={`nav-item ${isExpanded ? 'expanded' : ''} ${isActive ? 'active' : ''}`}
-                  onClick={() => toggleSection(module.id)}
-                  aria-expanded={isExpanded}
+                  className={`nav-item ${sessionsExpanded ? 'expanded' : ''} ${currentPage === item.page ? 'active' : ''}`}
+                  onClick={() => {
+                    if (sessionsExpanded) {
+                      // If submenu is open, navigate to sessions page and close it
+                      handleNavigation('sessions');
+                      setSessionsExpanded(false);
+                    } else {
+                      // If submenu is closed, close other submenus and open this one
+                      closeOtherSubmenus('sessions');
+                      setSessionsExpanded(true);
+                    }
+                  }}
                 >
-                  {getIcon(module.icon, 16)}
-                  <span>{module.label}</span>
-                  <span className={`nav-expand-icon ${isExpanded ? 'open' : ''}`}>
+                  {getIcon(item.icon, 16)} 
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${sessionsExpanded ? 'open' : ''}`}>
                     {getIcon('fa-chevron-down', 12)}
                   </span>
                 </button>
-
-                {isExpanded && (
+                {sessionsExpanded && (
                   <div className="nav-submenu">
                     <button
-                      className={`nav-submenu-item ${currentPage === module.id ? 'active' : ''}`}
-                      onClick={() => handleNavigation(module.id)}
+                      className={`nav-submenu-item ${currentPage === 'sessions' ? 'active' : ''}`}
+                      onClick={() => {
+                        handleNavigation('sessions');
+                        setSessionsExpanded(false);
+                      }}
                     >
-                      {getIcon(module.icon, 16)}
-                      <span>Overview</span>
+                      {getIcon('fa-calendar', 16)}
+                      <span>Sessions</span>
                     </button>
-                    {module.children.map((child) => (
-                      <button
-                        key={child.id}
-                        className={`nav-submenu-item ${currentPage === child.id ? 'active' : ''}`}
-                        onClick={() => handleNavigation(child.id)}
-                      >
-                        {getIcon(child.icon || module.icon, 16)}
-                        <span>{child.label}</span>
-                      </button>
-                    ))}
+                    <button
+                      className={`nav-submenu-item ${currentPage === 'session-booking' ? 'active' : ''}`}
+                      onClick={() => {
+                        handleNavigation('session-booking');
+                        setSessionsExpanded(false);
+                      }}
+                    >
+                      {getIcon('fa-plus', 16)}
+                      <span>+ Book Session</span>
+                    </button>
                   </div>
                 )}
               </div>
             );
           }
 
+          // Handle User Management as expandable submenu for Org Admin
+          if (item.page === 'user-management' && currentRole === 'org-admin') {
+            return (
+              <div key={item.page} className="nav-item-expandable">
+                <button
+                  className={`nav-item ${userManagementExpanded ? 'expanded' : ''} ${currentPage === 'add-admin' || currentPage === 'user-config' ? 'active' : ''}`}
+                  onClick={() => {
+                    if (userManagementExpanded) {
+                      // If submenu is open, just close it (no page for user-management itself)
+                      setUserManagementExpanded(false);
+                    } else {
+                      // If submenu is closed, close other submenus and open this one
+                      closeOtherSubmenus('user-management');
+                      setUserManagementExpanded(true);
+                    }
+                  }}
+                >
+                  {getIcon(item.icon, 16)} 
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${userManagementExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
+                </button>
+                {userManagementExpanded && (
+                  <div className="nav-submenu">
+                    <button
+                      className={`nav-submenu-item ${currentPage === 'add-admin' ? 'active' : ''}`}
+                      onClick={() => {
+                        handleNavigation('add-admin');
+                        setUserManagementExpanded(false);
+                      }}
+                    >
+                      {getIcon('fa-user-plus', 16)}
+                      <span>Add User</span>
+                    </button>
+                    <button
+                      className={`nav-submenu-item ${currentPage === 'user-config' ? 'active' : ''}`}
+                      onClick={() => {
+                        handleNavigation('user-config');
+                        setUserManagementExpanded(false);
+                      }}
+                    >
+                      {getIcon('fa-cog', 16)}
+                      <span>Config</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          // Handle Configuration as expandable submenu for Org Admin
+          if (item.page === 'org-configuration' && currentRole === 'org-admin') {
+            return (
+              <div key={item.page} className="nav-item-expandable">
+                <button
+                  className={`nav-item ${configurationExpanded ? 'expanded' : ''} ${['org-config-feedback', 'org-config-agenda', 'org-config-policy', 'org-config-buffer'].includes(currentPage) ? 'active' : ''}`}
+                  onClick={() => {
+                    if (configurationExpanded) setConfigurationExpanded(false);
+                    else { closeOtherSubmenus('configuration'); setConfigurationExpanded(true); }
+                  }}
+                >
+                  {getIcon(item.icon, 16)}
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${configurationExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
+                </button>
+                {configurationExpanded && (
+                  <div className="nav-submenu">
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-feedback' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-feedback'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-comment-dots', 16)}<span>Feedback Management</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-agenda' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-agenda'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-list-ol', 16)}<span>Agenda Questions</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-policy' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-policy'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-sliders-h', 16)}<span>Policy Tuning</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-config-buffer' ? 'active' : ''}`} onClick={() => { handleNavigation('org-config-buffer'); setConfigurationExpanded(false); }}>
+                      {getIcon('fa-clock', 16)}<span>Buffer Logic</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          // Handle Settings as expandable submenu for Org Admin
+          if (item.page === 'org-settings' && currentRole === 'org-admin') {
+            return (
+              <div key={item.page} className="nav-item-expandable">
+                <button
+                  className={`nav-item ${settingsExpanded ? 'expanded' : ''} ${['org-settings-profile', 'org-settings-org', 'org-settings-password', 'org-settings-communication'].includes(currentPage) ? 'active' : ''}`}
+                  onClick={() => {
+                    if (settingsExpanded) setSettingsExpanded(false);
+                    else { closeOtherSubmenus('settings'); setSettingsExpanded(true); }
+                  }}
+                >
+                  {getIcon(item.icon, 16)}
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${settingsExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
+                </button>
+                {settingsExpanded && (
+                  <div className="nav-submenu">
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-profile' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-profile'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-user', 16)}<span>My Profile</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-org' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-org'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-building', 16)}<span>Org Details</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-password' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-password'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-key', 16)}<span>Change Password</span>
+                    </button>
+                    <button className={`nav-submenu-item ${currentPage === 'org-settings-communication' ? 'active' : ''}`} onClick={() => { handleNavigation('org-settings-communication'); setSettingsExpanded(false); }}>
+                      {getIcon('fa-envelope', 16)}<span>Communication</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          // Handle Admin Management as expandable submenu for Platform Admin
+          if (item.page === 'admin-management' && currentRole === 'platform-admin') {
+            return (
+              <div key={item.page} className="nav-item-expandable">
+                <button
+                  className={`nav-item ${adminManagementExpanded ? 'expanded' : ''} ${currentPage === 'add-admin' || currentPage === 'platform-config' || currentPage === 'admin-management' ? 'active' : ''}`}
+                  onClick={() => {
+                    if (adminManagementExpanded) {
+                      // If submenu is open, navigate to admin-management page and close it
+                      handleNavigation('admin-management');
+                      setAdminManagementExpanded(false);
+                    } else {
+                      // If submenu is closed, close other submenus and open this one
+                      closeOtherSubmenus('admin-management');
+                      setAdminManagementExpanded(true);
+                    }
+                  }}
+                >
+                  {getIcon(item.icon, 16)} 
+                  <span>{item.label}</span>
+                  <span className={`nav-expand-icon ${adminManagementExpanded ? 'open' : ''}`}>
+                    {getIcon('fa-chevron-down', 12)}
+                  </span>
+                </button>
+                {adminManagementExpanded && (
+                  <div className="nav-submenu">
+                    <button
+                      className={`nav-submenu-item ${currentPage === 'add-admin' ? 'active' : ''}`}
+                      onClick={() => {
+                        handleNavigation('add-admin');
+                        setAdminManagementExpanded(false);
+                      }}
+                    >
+                      {getIcon('fa-user-plus', 16)}
+                      <span>Add Admin</span>
+                    </button>
+                    <button
+                      className={`nav-submenu-item ${currentPage === 'platform-config' ? 'active' : ''}`}
+                      onClick={() => {
+                        handleNavigation('platform-config');
+                        setAdminManagementExpanded(false);
+                      }}
+                    >
+                      {getIcon('fa-cog', 16)}
+                      <span>Config</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          }
+          
+          // Regular navigation items
           return (
             <button
-              key={module.id}
-              className={`nav-item ${currentPage === module.id ? 'active' : ''}`}
-              onClick={() => handleNavigation(module.id)}
+              key={item.page}
+              className={`nav-item ${currentPage === item.page ? 'active' : ''}`}
+              onClick={() => {
+                handleNavigation(item.page);
+                closeAllSubmenus();
+              }}
             >
-              {getIcon(module.icon, 16)}
-              <span>{module.label}</span>
+              {getIcon(item.icon, 16)} {item.label}
             </button>
           );
         })}
       </div>
-
       {orgSummary && (
         <div className="org-summary-card">
           <h3 className="org-summary-title">{orgSummary.name}</h3>

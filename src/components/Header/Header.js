@@ -10,7 +10,6 @@ const Header = () => {
     { role: 'super-admin', icon: 'fa-crown', label: 'Super Admin' },
     { role: 'platform-admin', icon: 'fa-server', label: 'Platform Admin' },
     { role: 'org-admin', icon: 'fa-building', label: 'Org Admin' },
-    { role: 'sub-admin', icon: 'fa-user-shield', label: 'Sub Admin' },
     { role: 'mentor', icon: 'fa-chalkboard-teacher', label: 'Mentor' },
     { role: 'mentee', icon: 'fa-user-graduate', label: 'Mentee' }
   ];

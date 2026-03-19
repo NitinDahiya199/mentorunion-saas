@@ -1,9 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getDefaultPageForRole, roles } from '../data/informationArchitecture';
 
 const AppContext = createContext();
-
-export { roles };
 
 export const useApp = () => {
   const context = useContext(AppContext);
@@ -13,9 +10,38 @@ export const useApp = () => {
   return context;
 };
 
+// Role Configuration
+export const roles = {
+  'super-admin': {
+    name: 'Super Admin',
+    roleText: 'System Owner',
+    avatarText: 'SA'
+  },
+  'platform-admin': {
+    name: 'Platform Admin',
+    roleText: 'Platform Operations',
+    avatarText: 'PA'
+  },
+  'org-admin': {
+    name: 'Organisation Admin',
+    roleText: 'TechMentor Inc.',
+    avatarText: 'OA'
+  },
+  'mentor': {
+    name: 'Dr. Sarah Johnson',
+    roleText: 'Mentor',
+    avatarText: 'SJ'
+  },
+  'mentee': {
+    name: 'Alex Thompson',
+    roleText: 'Mentee',
+    avatarText: 'AT'
+  }
+};
+
 export const AppProvider = ({ children }) => {
   const [currentRole, setCurrentRole] = useState('super-admin');
-  const [currentPage, setCurrentPage] = useState(getDefaultPageForRole('super-admin'));
+  const [currentPage, setCurrentPage] = useState('dashboard');
   
   // Organizations for mentor with their data
   const [mentorOrganizations] = useState([
@@ -223,7 +249,17 @@ export const AppProvider = ({ children }) => {
   
   // Set default page based on role
   useEffect(() => {
-    setCurrentPage(getDefaultPageForRole(currentRole));
+    if (currentRole === 'mentee') {
+      setCurrentPage('mentee-dashboard');
+    } else if (currentRole === 'mentor') {
+      setCurrentPage('mentor-dashboard');
+    } else if (currentRole === 'super-admin') {
+      setCurrentPage('dashboard');
+    } else if (currentRole === 'org-admin') {
+      setCurrentPage('org-dashboard');
+    } else if (currentRole === 'platform-admin') {
+      setCurrentPage('platform-dashboard');
+    }
   }, [currentRole]);
   
   // Initialize sidebar as collapsed on mobile
@@ -262,7 +298,7 @@ export const AppProvider = ({ children }) => {
   // Switch role
   const switchRole = (role) => {
     setCurrentRole(role);
-    setCurrentPage(getDefaultPageForRole(role));
+    setCurrentPage('dashboard');
   };
 
   // Navigate to page
